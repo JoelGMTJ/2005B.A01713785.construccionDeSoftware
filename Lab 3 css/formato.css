@@ -32,7 +32,9 @@ h1.tanque {
 /* estilo css en documento externo*/
 body {
     font-family: "Roboto", "Arial", sans-serif;
+    color: #555;
 }
+
 #merc {
     color:grey;
 }
@@ -65,9 +67,44 @@ h1 {
     font-family: "mac sans font", "Roboto", "arial";
     text-transform: capitalize;
     text-shadow: .2em .2em .2em red;
+    color: #333;
 }
 
 *.long_text{
     line-height: 1.5;
     padding: 4em 1em;
+    text-align: justify;
+}
+
+#cry {
+    font-family: fantasy;
+    color: red
+}
+
+h2 {
+    font-family: sans-serif;
+    font-size:xx-large;
+    font-weight: 650;
+    color: #333;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.que {
+    list-style-type: square;
+    font-size: 1.4em;
+}
+
+li.ans {
+    list-style-type: none;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    border-bottom-style: dashed;
+    border-bottom-width: .1em;
+    line-height: 1.5;
+    padding: 1em 1em;
 }
