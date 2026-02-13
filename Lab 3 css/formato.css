@@ -1,0 +1,73 @@
+/*
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+Las fuentes sans-serif son mejores para las pantallas, las fuentes serif son mejores para lo impreso
+
+
+li {
+    color: darkgreen
+}
+
+.tanques {
+    color : red;
+
+}
+
+h1.tanque {
+    solamente para los tanques que tambien sean h1
+}
+
+#vi {
+    font-size: large;
+}
+
+.tanque:hover {
+    font-size: large;
+    color :black;
+}
+    ------- Codigo que hicimos en clase, dejar solamente para repasarlo ------
+*/
+/* estilo css en documento externo*/
+body {
+    font-family: "Roboto", "Arial", sans-serif;
+}
+#merc {
+    color:grey;
+}
+#orbr {
+    color:navy
+}
+#fer {
+    color:darkred
+}
+#wil {
+    color:blue
+}
+#vcarb {
+    color: lightslategrey;
+}
+#amr {  
+    color:darkgreen
+}
+#haa {
+    color:red
+}
+#sau {
+    color: greenyellow
+}
+#alp {
+    color:magenta
+}
+
+h1 {
+    font-family: "mac sans font", "Roboto", "arial";
+    text-transform: capitalize;
+    text-shadow: .2em .2em .2em red;
+}
+
+*.long_text{
+    line-height: 1.5;
+    padding: 4em 1em;
+}
