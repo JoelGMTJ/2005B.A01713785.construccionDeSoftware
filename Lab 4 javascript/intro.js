@@ -57,9 +57,13 @@ if (userAns == ans){
 } else {
     document.write("Respuesta incorrecta");
 }
-document.write("<br>")
+document.write("<br><br>")
 document.write("Te has tardado " + ansTime + " segundos")
+document.write("<br><br>")
+document.write("Los siguientes ejercicios están en la consola")
 document.write("<br>")
+document.write("Presiona ctrl + shift + i para acceder a la consola")
+document.write("<br><br>")
 
 
 /* La practica de usar document.write es mala, 
@@ -90,10 +94,38 @@ const arr1 = [[3, -7, 10, 0, -2, 8, -9, 4, -1, 6],
               [0, -1, 4, -5, 10, -10, 3, -2, 8, -7],
               [6, -9, 2, -3, 5, -8, 0, 7, -4, 1]];
 
-for (let i = 0; i < 4; i++){
+for (let i = 0; i < arr1.length; i++){
     let amountAns = counter(arr1[i]);
     console.log("Cantidad de numeros negativos: " + amountAns[0]);
     console.log("Cantidad de ceros: " + amountAns[1]);
     console.log("Cantidad de numeros positivos: " + amountAns[2]);
     console.log("Fin de caso " + (i+1))
 }
+
+/*
+Ejercicio 4---------------------------------------------------------------------
+*/
+
+const arr2 = 
+[[12, 87, 45, 3, 99, 54, 68, 21, 76, 30],
+[100, 5, 73, 41, 88, 19, 64, 27, 90, 2],
+[34, 0, 57, 82, 16, 49, 95, 23, 71, 60],
+[8, 92, 38, 74, 11, 53, 67, 29, 84, 46]];
+
+function promedio(array){
+    let avg = 0;
+    for (let i = 0; i < array.length; i++){
+        avg += array[i];
+    }
+    avg /= array.length;
+    return avg;
+}
+
+for (let i = 0; i < arr2.length; i++){
+    let avg = promedio(arr2[i]);
+    console.log("Promedio de set de numeros " + (i+1) + ": " + avg)
+}
+
+/*
+Ejercicio 5---------------------------------------------------------------------
+*/
