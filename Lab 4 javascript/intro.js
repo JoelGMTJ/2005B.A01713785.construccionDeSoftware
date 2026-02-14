@@ -129,3 +129,23 @@ for (let i = 0; i < arr2.length; i++){
 /*
 Ejercicio 5---------------------------------------------------------------------
 */
+
+function inverso(num){
+    let nOfDigits = (Math.floor(Math.log10(num))+1);
+    let rest;
+    let inv = 0;
+    for (let i = 0; i < nOfDigits; i++){
+        inv = inv*10;
+        rest = num%10;
+        inv += rest;
+        num = Math.floor(num/10);
+    }
+    return inv;
+}
+
+let arr3 = [6372,4569,1234,987654321,10];
+
+for (let i = 0; i < arr3.length; i++){
+    let inv = inverso(arr3[i]);
+    console.log("Inverso de " + (arr3[i]) + "= " + inv)
+}
