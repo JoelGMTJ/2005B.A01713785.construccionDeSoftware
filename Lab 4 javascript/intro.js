@@ -42,20 +42,58 @@ document.write("<br>")
 Ejercicio 2---------------------------------------------------------------------
 */
 
-let n1 = Math.floor(Math.random() * 20);
-let n2 = Math.floor(Math.random() * 20);
+const n1 = Math.floor(Math.random() * 20);
+const n2 = Math.floor(Math.random() * 20);
 
-let ans = n1+n2;
+const ans = n1+n2;
 
-let time1 = Date.now();
-let userAns = parseInt(prompt("Cuanto vale " + n1 + " + " + n2 + "?"));
-let time2 = Date.now();
+const time1 = Date.now();
+const userAns = parseInt(prompt("Cuanto vale " + n1 + " + " + n2 + "?"));
+const time2 = Date.now();
+let ansTime = time2-time1;
+ansTime /= 1000;
 if (userAns == ans){
     document.write("Respuesta correcta");
 } else {
     document.write("Respuesta incorrecta");
 }
 document.write("<br>")
-document.write()
-/* La practica de usar document.write es mala, se prefiere usar en inner.html */
+document.write("Te has tardado " + ansTime + " segundos")
+document.write("<br>")
 
+
+/* La practica de usar document.write es mala, 
+esto pues si se hace después de haber cargado la pagina
+borrará todo el contenido previo
+se prefiere usar en inner.html */
+
+/*
+Ejercicio 3---------------------------------------------------------------------
+*/
+
+function counter(array){
+    let amountAns = [0,0,0];
+    for (let i = 0; i < array.length; i++){
+        if (array[i] == 0){
+            amountAns[1] += 1;
+        } else if (array[i] < 0){
+            amountAns[0] += 1;
+        } else{
+            amountAns[2] += 1;
+        }
+    }
+    return amountAns;
+}
+
+const arr1 = [[3, -7, 10, 0, -2, 8, -9, 4, -1, 6],
+              [-10, 5, -3, 9, 1, -6, 7, -4, 2, -8],
+              [0, -1, 4, -5, 10, -10, 3, -2, 8, -7],
+              [6, -9, 2, -3, 5, -8, 0, 7, -4, 1]];
+
+for (let i = 0; i < 4; i++){
+    let amountAns = counter(arr1[i]);
+    console.log("Cantidad de numeros negativos: " + amountAns[0]);
+    console.log("Cantidad de ceros: " + amountAns[1]);
+    console.log("Cantidad de numeros positivos: " + amountAns[2]);
+    console.log("Fin de caso " + (i+1))
+}
