@@ -149,3 +149,61 @@ for (let i = 0; i < arr3.length; i++){
     let inv = inverso(arr3[i]);
     console.log("Inverso de " + (arr3[i]) + "= " + inv)
 }
+
+/*
+Ejercicio 6---------------------------------------------------------------------
+*/
+
+/*
+Voy a realizar el problema de leetcode 162, Find Peak Element
+A peak element is an element that is strictly greater than its neighbors.
+
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+
+You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
+
+You must write an algorithm that runs in O(log n) time.
+
+El problema se basa en la busqueda binaria un poco modificada para encontrar un 
+'peak' element. 
+Lo resolví en c++, ahora voy a implementar una solucion en JavaScript
+*/
+
+/*Casos donde hay un peak en los extremos del arreglo*/
+
+let nums5 = [1,2,3,1]
+let nums6 = [1,2,1,3,5,6,4];
+
+
+function findPeak(nums){
+    if (nums.length == 1){
+        return 0;
+    }
+    if (nums[nums.length-1] > nums[nums.length-2]){
+        return nums.length -1;
+    }
+    if (nums[0] > nums[1]){
+        return 0;
+    }
+    
+    /*Ahora va la implementacion de busqueda binaria*/
+    let low = 1, high = nums.length-2;
+    let mid = low - Math.floor((high - low)/2);
+    while (low<high){
+        mid = low + Math.floor((high - low)/2);
+        if (nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]) {
+            return mid;
+        }
+        if (nums[mid] < nums[mid+1]){ 
+            low = mid+1;
+        } else{
+            high = mid-1;
+        }
+    }
+
+    return low;
+}
+
+console.log("A possible peak of those elements is in index: " + findPeak(nums5));
+console.log("A possible peak of those elements is in index: " + findPeak(nums6));
+console.log("Las respuestas correctas estan aqui: https://leetcode.com/problems/find-peak-element/description/")
