@@ -154,20 +154,9 @@ for (let i = 0; i < arr3.length; i++){
 Ejercicio 6---------------------------------------------------------------------
 */
 
-/*
-Voy a realizar el problema de leetcode 162, Find Peak Element
-A peak element is an element that is strictly greater than its neighbors.
-
-Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
-
-You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
-
-You must write an algorithm that runs in O(log n) time.
-
-El problema se basa en la busqueda binaria un poco modificada para encontrar un 
-'peak' element. 
-Lo resolví en c++, ahora voy a implementar una solucion en JavaScript
-*/
+document.write("<p>");
+document.write("Voy a realizar el problema de leetcode 162, Find Peak ElementA peak element is an element that is strictly greater than its neighbors.Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.You must write an algorithm that runs in O(log n) time.El problema se basa en la busqueda binaria un poco modificada para encontrar un 'peak' element. Lo resolví en c++, ahora voy a implementar una solucion en JavaScript");
+document.write("</p>")
 
 /*Casos donde hay un peak en los extremos del arreglo*/
 
@@ -206,4 +195,6 @@ function findPeak(nums){
 
 console.log("A possible peak of those elements is in index: " + findPeak(nums5));
 console.log("A possible peak of those elements is in index: " + findPeak(nums6));
-console.log("Las respuestas correctas estan aqui: https://leetcode.com/problems/find-peak-element/description/")
+document.write("<br><p>");
+document.write("Las respuestas correctas estan aqui: <a href='https://leetcode.com/problems/find-peak-element/description/'>problema 162 en leetcode</a>");
+document.write("</p>")
