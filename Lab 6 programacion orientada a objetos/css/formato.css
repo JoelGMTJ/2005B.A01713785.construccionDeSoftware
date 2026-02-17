@@ -1,34 +1,36 @@
 #f1_title {
     color:red;
 }
-#mcl {
+#mclaren {
     color: #F47600;
 }
-
-#merc {
+#mercedes {
     color:#00D7B6;
 }
-#orbr {
+#redbull {
     color:#4781D7
 }
-#fer {
+#ferrari {
     color:#ED1131
 }
-#wil {
+#williams {
     color:#1868DB
 }
 #vcarb {
     color: #6C98FF;
 }
-#amr {  
+#astonmartin {  
     color:#229971
 }
-#haa {
+#haas {
     color:#9C9FA2
 }
-#sau {
+#sauber {
     color: #01C00E
 }
-#alp {
+#alpine {
     color:#00A1E8
+}
+#cadillac {
+    color: grey;
 }
