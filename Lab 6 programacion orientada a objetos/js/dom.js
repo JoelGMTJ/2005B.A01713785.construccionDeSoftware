@@ -135,7 +135,7 @@ const on_hover = (team, divTeam) => {
 const off_hover = (team, divTeam) => {
     divTeam.innerHTML = `
         <div style="color: ${team.color}">${team.shortName}</div>
-        <img  class="image is-16by9 is-rounded"    src="${team.img}" alt=${team.shortName} livery></img>
+        <img  class="image is-16by9"    src="${team.img}" alt=${team.shortName} livery></img>
     `;
 }
 
