@@ -147,4 +147,37 @@ teams.forEach(({ team, divId }) => {
     off_hover(team,div);
 });
 
-document.getElementById("mainPageTitle").style.position = "relative";
+
+function leerContrasena1() {
+    var con1 = document.getElementById("contraseña1").value;
+    var con2 = document.getElementById("contraseña2").value;
+    var passLength1 = document.getElementById("contraseña1").value.length;
+    var passLength2 = document.getElementById("contraseña2").value.length;
+
+    
+    if (passLength1 > 7 && passLength2 > 7){
+        if (con1 === con2){
+            console.log("Contraseña correcta")
+            mensajeContraseña.innerHTML = `
+            <div class="has-text-success">
+                Contraseña correcta
+            </div>
+            `
+        } else{
+            console.log("Contraseña incorrecta")
+            mensajeContraseña.innerHTML = `
+            <div class="has-text-danger">
+                Contraseña incorrecta
+            </div>
+            `
+        }
+    } else{
+        mensajeContraseña.innerHTML = `
+            <div class="has-text-warning">
+                Escribe una contraseña que contenga almenos 8 caracteres
+            </div>
+            `
+    }
+}
+
+document.getElementById("botonConfirmarContraseña").onclick = function() {leerContrasena1()};
