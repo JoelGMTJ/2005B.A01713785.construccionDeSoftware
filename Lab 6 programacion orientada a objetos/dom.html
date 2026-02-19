@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Prueba</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="css/formato.css">
 </head>
 
 <body>
 
     <div class="content px-6 mx-6">
 
-        <h1>The F1 2026 grid</h1>
-        <div class="columns">
+        <h1 id="mainPageTitle">The F1 2026 grid</h1>
+        <div class="columns" id="topColumn">
             <div class="column mx-0.5" id="div_mclaren"></div>
             <div class="column mx-0.5" id="div_mercedes"></div>
             <div class="column mx-0.5" id="div_redbull"></div>
@@ -35,9 +36,37 @@
 
         <div class="notification is-primary">
             <button class="delete"></button>
-            Y con esto terminamos de ver el playground, ahora vamos con las preguntas de la practica 6
+            Y con esto terminamos de ver el playground, ahora vamos con los ejercicios del laboratorio 6
         </div>
     </div>
+
+    <p class="content px-6 mx-6">Yo voy a hacer las 2 opciones por que quiero practicar, espero no sea mucho problema</p>
+
+
+    <div class="instruccion px-6 mx-6">
+        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para validar passwords. La página debe tener una forma con 2 campos, el campo de password, y el campo de verificar password. Utiliza al máximo tu creatividad e ingeniería para que la página sea un validador de passwords de estado del arte, con la mejor experiencia para el usuario.
+    </div>
+
+    <div class="respuesta px-6 mx-6" id="respuesta1">
+        <div id="primeraContraseña">
+            <input type="password" placeholder="Escribe tu contraseña" class="input shortPassword">
+        </div>
+        <div id="segundaContraseña">
+            <input type="password" placeholder="Confirma tu contraseña" class="input shortPassword">
+        </div>
+        <div id="botonConfirmarContraseña">
+            <button class="button">Boton</button>
+        </div>
+    </div>
+
+
+    <div class="instruccion px-6 mx-6">
+        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para vender 3 productos de tu interés, con los precios y promociones a tu gusto. La página debe permitir al usuario escoger la cantidad de unidades de cada producto, y debe mostrar el precio total, el IVA que se está cargando, y toda la información que consideres pertinente para que la experiencia del usuario sea la mejor. La página debe validar los rangos de las unidades de cada producto.
+    </div>
+    <div class="respuesta px-6 mx-6" id="respuesta2">
+        Respuesta 2
+    </div>
+
     <script src="js/dom.js"></script>
 </body>
 

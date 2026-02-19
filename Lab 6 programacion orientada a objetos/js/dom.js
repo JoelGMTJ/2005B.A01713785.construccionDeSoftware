@@ -146,3 +146,5 @@ teams.forEach(({ team, divId }) => {
     div.onmouseleave = () => off_hover(team, div);
     off_hover(team,div);
 });
+
+document.getElementById("mainPageTitle").style.position = "relative";
