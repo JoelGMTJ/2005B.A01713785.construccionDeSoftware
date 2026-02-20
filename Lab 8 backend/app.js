@@ -1,0 +1,120 @@
+console.log("Hello world")
+
+const filesystem = require('fs');
+//Require es como el import o include
+//filesystem es como quieres que se llame las funciones que requieres
+
+filesystem.writeFileSync("hola.txt", "Hola mundo");
+
+const http = require("http");
+
+const html = `
+    <!DOCTYPE html>
+<html data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prueba</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="css/formato.css">
+</head>
+
+<body>
+
+    <div class="content px-6 mx-6">
+
+        <h1 id="mainPageTitle">The F1 2026 grid</h1>
+        <div class="columns" id="topColumn">
+            <div class="column mx-0.5" id="div_mclaren"></div>
+            <div class="column mx-0.5" id="div_mercedes"></div>
+            <div class="column mx-0.5" id="div_redbull"></div>
+            <div class="column mx-0.5" id="div_ferrari"></div>
+        </div>
+        <div class="columns">
+            <div class="column mx-0.5" id="div_williams"></div>
+            <div class="column mx-0.5" id="div_rb"></div>
+            <div class="column mx-0.5" id="div_astonmartin"></div>
+            <div class="column mx-0.5" id="div_haas"></div>
+        </div>
+        <div class="columns">
+            <div class="column mx-0.5" id="div_audi"></div>
+            <div class="column mx-0.5" id="div_alpine"></div>
+            <div class="column mx-0.5" id="div_cadillac"></div>
+            <div class="column mx-0.5"></div>
+
+        </div>
+
+        <div class="notification is-primary">
+            <button class="delete"></button>
+            Y con esto terminamos de ver el playground, ahora vamos con los ejercicios del laboratorio 6
+        </div>
+    </div>
+
+    <p class="content px-6 mx-6">Yo voy a hacer las 2 opciones por que quiero practicar, espero no sea mucho problema
+    </p>
+
+
+    <div class="instruccion px-6 mx-6">
+        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para validar passwords. La página debe tener una
+        forma con 2 campos, el campo de password, y el campo de verificar password. Utiliza al máximo tu creatividad e
+        ingeniería para que la página sea un validador de passwords de estado del arte, con la mejor experiencia para el
+        usuario.
+    </div>
+    <div class="columns is-centered">
+        <div class="respuesta px-6 mx-6 box column" id="respuesta1">
+            <br>
+            Escribe la contraseña para tu usuario, la contraseña tiene que tener almenos 8 caracteres
+            <br><br>
+            <div id="primeraContraseña">
+                <input type="password" placeholder="Escribe tu contraseña" class="input shortPassword" id="contraseña1">
+            </div>
+            <div id="segundaContraseña">
+                <input type="password" placeholder="Confirma tu contraseña" class="input shortPassword"
+                    id="contraseña2">
+            </div>
+            <div id="mensajeContraseña">
+                Escribe una contraseña
+            </div>
+            <br>
+            <div>
+                <button class="button is-dark is-primary" id="botonConfirmarContraseña">Validar</button>
+            </div>
+            <br>
+
+        </div>
+    </div>
+
+
+    <div class="instruccion px-6 mx-6">
+        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para vender 3 productos de tu interés, con los
+        precios y promociones a tu gusto. La página debe permitir al usuario escoger la cantidad de unidades de cada
+        producto, y debe mostrar el precio total, el IVA que se está cargando, y toda la información que consideres
+        pertinente para que la experiencia del usuario sea la mejor. La página debe validar los rangos de las unidades
+        de cada producto.
+    </div>
+    <div class="respuesta px-6 mx-6" id="respuesta2">
+        Respuesta 2
+    </div>
+
+    <div>
+        Fuentes usadas para la información <br>
+        <a class="link" href="https://www.youtube.com">link</a>
+    </div>
+
+    <script src="js/dom.js"></script>
+</body>
+
+</html>
+`;
+
+const server = http.createServer((request, response) => {  
+//    console.log(request);  
+//    console.log(response);
+    console.log(request.url);
+    response.setHeader('Content-Type', 'text/html');
+    response.write(html);
+    response.end();
+});
+
+server.listen(3000);

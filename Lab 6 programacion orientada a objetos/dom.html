@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="dark">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -67,7 +67,7 @@
             </div>
             <br>
             <div>
-                <button class="button is-dark is-primary" id="botonConfirmarContraseña">Validar</button>
+                <button class="button is-primary" id="botonConfirmarContraseña">Validar</button>
             </div>
             <br>
 
@@ -82,13 +82,62 @@
         pertinente para que la experiencia del usuario sea la mejor. La página debe validar los rangos de las unidades
         de cada producto.
     </div>
-    <div class="respuesta px-6 mx-6" id="respuesta2">
-        Respuesta 2
+    <div class="columns is-centered">
+        <div class="respuesta box column is-one-third">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title">Bienvenido a la tienda de los mejores juegos indies</h3>
+                    <p class="has-text-info">Si compras almenos 5 productos, te damos el 15% de descuento!</p> <br>
+                    <div class="columns"><img id="producto1" class="column"
+                            src="https://www.fangamer.com/cdn/shop/products/product_HK_hornet_plush_main_55c63d68-e558-4387-9b7d-d3d030627658.png?crop=center&height=600&v=1691698061&width=900" />
+                            <div class="column">
+                                Peluche de Hornet <br>
+                                <div id="precio1"></div>
+                                <input type="number" class="selectorP" min="0" if="cantidad1" value="0">
+                            </div>
+                    </div>
+                    <div class="columns"><img id="producto2" class="column"
+                            src="https://www.fangamer.com/cdn/shop/files/product_Balatro_Playing-Cards_main_62bf66db-f6b4-4292-b200-2a0d7597d3e8.png?crop=center&height=600&v=1732126603&width=900" />
+                            <div class="column">
+                                Mazo de cartas de Balatro <br>
+                                <div id="precio2"></div>
+
+                                <input type="number" class="selectorP" min="0" id="cantidad2" value="0">
+                            </div>
+                    </div>
+                    <div class="columns"><img id="producto3" class="column"
+                            src="https://images-na.ssl-images-amazon.com/images/I/6127A+l9yIL._AC_UL600_SR600,600_.jpg" />
+                            <div class="column">
+                                Peluche de Celeste <br>
+                                <div id="precio3"></div>
+                                <input type="number" class="selectorP" min="0" id="cantidad3" value="0">
+                            </div>  
+                    </div>
+                    <div class="columns">
+                            <div class="column is-offset-8" id="precioTotal">
+                                Precio total: 0$
+                            </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
-    <div>
-        Fuentes usadas para la información <br>
-        <a class="link" href="https://www.youtube.com">link</a>
+    <div class="px-6 mx-6">
+        <div class="content subtitle">Fuentes usadas para la información </div>
+        <li>Ayuda para el text input en html <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/password">mozilla</a>
+        </li>
+        <li>Ayuda para centrar elementos <a href="https://www.w3schools.com/css/css_align.asp">w3schools</a></li>
+        <li>Documentación de <a href="https://bulma.io/documentation/form/input/">Bulma</a> para text inputs </li>
+        <li>Documentación de <a href="https://bulma.io/documentation/elements/button/">Bulma</a> para botones</li>
+        <li>Ayuda para elementos de on.click de <a
+                href="https://www.w3schools.com/jsref/event_onclick.asp">w3schools</a></li>
+        <li><a href="https://bulma.io/documentation/helpers/color-helpers/">Bulma</a> color helpers</li>
+        <li><a href="https://bulma.io/documentation/elements/box/">Bulma</a> box elements</li>
+        <li>DOM input text en <a href="https://www.w3schools.com/jsref/dom_obj_text.asp">w3schools</a></li>
+        <!-- <li>Descripcion <a  href="linkAPaginaWeb">página</a></li> -->
     </div>
 
     <script src="js/dom.js"></script>

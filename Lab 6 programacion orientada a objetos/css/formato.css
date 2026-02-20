@@ -15,7 +15,6 @@
   margin-top: 1.5em;
   margin-left: auto;
   margin-right: auto;
-  max-width: 400px;
 }
 
 .shortPassword {
@@ -26,4 +25,21 @@
 #botonConfirmarContraseña {
   width: 4em;
   margin-left: 11em;
+}
+
+#producto1 {
+  width: 26em;
+  height: 13.5em;
+}
+#producto2 {
+  width: 26em;
+  height: 13.5em;
+}
+#producto3 {
+  width: 13.5em;
+  height: 13.5em;
+}
+
+#respuesta1 {
+  max-width: 25em;
 }

@@ -108,6 +108,19 @@ const cadillac = {
     link: "https://www.cadillacf1team.com",
 }
 
+const hornet = {
+    price: 30,
+}
+const balatro = {
+    price: 20,
+}
+const celeste = {
+    price: 25,
+}
+
+
+
+
 // Array de equipos con sus ID de div correspondientes
 const teams = [
     { team: mclaren, divId: "div_mclaren" },
@@ -167,7 +180,7 @@ function leerContrasena1() {
             console.log("Contraseña incorrecta")
             mensajeContraseña.innerHTML = `
             <div class="has-text-danger">
-                Contraseña incorrecta
+                Las contraseñas no coinciden
             </div>
             `
         }
@@ -181,3 +194,47 @@ function leerContrasena1() {
 }
 
 document.getElementById("botonConfirmarContraseña").onclick = function() {leerContrasena1()};
+
+const obtenerPrecioTotal = () => {
+    const cant1 = Number(document.getElementById("cantidad1").value);
+    const cant2 = Number(document.getElementById("cantidad2").value);
+    const cant3 = Number(document.getElementById("cantidad3").value);
+    const prec1 = cant1 * hornet.price;
+    const prec2 = cant2 * balatro.price;
+    const prec3 = cant3 * celeste.price;
+
+    let precioTotal = prec1+prec2+prec3;
+
+    if((cant1 + cant2 + cant3) >= 5){
+        precioTotal = precioTotal*0.85;
+    }
+
+    const contenedorTotal = document.getElementById("precioTotal");
+    contenedorTotal.innerHTML = `
+        Precio total: ${precioTotal}$
+    `;
+}
+
+document.querySelectorAll(".selectorP").forEach(input => {
+    input.oninput = (c) => {
+        if (c.target.value < 0) {
+            c.target.value = 0;
+        }
+        obtenerPrecioTotal();
+    };
+});
+
+function setPrecios() {
+    precio1.innerHTML=`
+    <b>Precio: ${hornet.price}$</b> 
+    `;
+    precio2.innerHTML=`
+    <b>Precio: ${balatro.price}$</b> 
+    `;
+    precio3.innerHTML=`
+    <b>Precio: ${celeste.price}$</b> 
+    `;
+}
+
+setPrecios();
+
