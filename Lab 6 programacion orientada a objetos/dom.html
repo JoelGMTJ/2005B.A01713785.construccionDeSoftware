@@ -90,38 +90,63 @@
                     <p class="has-text-info">Si compras almenos 5 productos, te damos el 15% de descuento!</p> <br>
                     <div class="columns"><img id="producto1" class="column"
                             src="https://www.fangamer.com/cdn/shop/products/product_HK_hornet_plush_main_55c63d68-e558-4387-9b7d-d3d030627658.png?crop=center&height=600&v=1691698061&width=900" />
-                            <div class="column">
-                                Peluche de Hornet <br>
-                                <div id="precio1"></div>
-                                <input type="number" class="selectorP" min="0" id="cantidad1" value="0">
-                            </div>
+                        <div class="column">
+                            Peluche de Hornet <br>
+                            <div id="precio1"></div>
+                            <input type="number" class="selectorP" min="0" id="cantidad1" value="0">
+                        </div>
                     </div>
                     <div class="columns"><img id="producto2" class="column"
                             src="https://www.fangamer.com/cdn/shop/files/product_Balatro_Playing-Cards_main_62bf66db-f6b4-4292-b200-2a0d7597d3e8.png?crop=center&height=600&v=1732126603&width=900" />
-                            <div class="column">
-                                Mazo de cartas de Balatro <br>
-                                <div id="precio2"></div>
+                        <div class="column">
+                            Mazo de cartas de Balatro <br>
+                            <div id="precio2"></div>
 
-                                <input type="number" class="selectorP" min="0" id="cantidad2" value="0">
-                            </div>
+                            <input type="number" class="selectorP" min="0" id="cantidad2" value="0">
+                        </div>
                     </div>
                     <div class="columns"><img id="producto3" class="column"
                             src="https://images-na.ssl-images-amazon.com/images/I/6127A+l9yIL._AC_UL600_SR600,600_.jpg" />
-                            <div class="column">
-                                Peluche de Celeste <br>
-                                <div id="precio3"></div>
-                                <input type="number" class="selectorP" min="0" id="cantidad3" value="0">
-                            </div>  
+                        <div class="column">
+                            Peluche de Celeste <br>
+                            <div id="precio3"></div>
+                            <input type="number" class="selectorP" min="0" id="cantidad3" value="0">
+                        </div>
                     </div>
                     <div class="columns">
-                            <div class="column is-offset-8" id="precioTotal">
-                                Precio total: 0$
-                            </div>  
+                        <div class="column is-offset-8" id="precioTotal">
+                            Precio total: 0$
+                        </div>
+                    </div>
+                    <div class="small-text">
+                        intenta hacer click en las imágenes o en el titulo de la tienda :)
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div id="preguntas" class="content px-6 mx-6">
+        <div class="instruccion">
+            ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?
+        </div>
+        <div class="respuesta">
+            Porque es relativamente fácil checarlos en js, y así nos evitamos que el usuario escriba una respuesta que no esperamos ya sea accidentalmente o con malas intenciones y termine rompiendo la base de datos, algún sistema en el backend, o cualquier otro sistema. En el caso que se envíen esos datos y se rompan en el backend, el costo y tiempo de reparación será más alto que lo que nos evitamos al instalar esa revisión. <br>
+            Mientras que esa validación solamente es para experiencia de usuario y muy básica seguridad, se puede evitar muy facilmente.
+        </div>
+        <div class="instruccion">
+            ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?
+        </div>
+        <div class="respuesta">
+            Se puede saltar de varias formas, una de ellas es irte a la consola del navegador y alterar los archivos o saltandose la ejecución de js por completo, otra forma es enviando comandos desde postman o otros lados los cuales le llegarán directamente al servidor, evitando pasar por algunas seguridades que instalamos en el lado del usuario.
+        </div>
+        <div class="instruccion">
+            Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?
+        </div>
+        <div class="respuesta">
+            Porque es una forma fácil de revisar los datos, no pierdes mucho tiempo implementandolos, y para los usuarios es algo de buena experiencia de usuario, evitando que accidentalmente escriban letras en un campo numérico, que intenten enviar un correo mal escrito, entre otras.
+        </div>
     </div>
 
     <div class="px-6 mx-6">
@@ -137,7 +162,10 @@
         <li><a href="https://bulma.io/documentation/helpers/color-helpers/">Bulma</a> color helpers</li>
         <li><a href="https://bulma.io/documentation/elements/box/">Bulma</a> box elements</li>
         <li>DOM input text en <a href="https://www.w3schools.com/jsref/dom_obj_text.asp">w3schools</a></li>
-        <li>Repaso de funciones flecha en <a  href="https://www.w3schools.com/js/js_arrow_function.asp">w3schools</a></li>
+        <li>Repaso de funciones flecha en <a href="https://www.w3schools.com/js/js_arrow_function.asp">w3schools</a>
+        </li>
+        <li>Ayuda sobre la seguridad en html y js de <a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">owasp</a>
+        </li>
     </div>
 
     <script src="js/dom.js"></script>
