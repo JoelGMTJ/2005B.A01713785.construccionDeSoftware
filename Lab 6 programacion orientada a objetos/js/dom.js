@@ -1,6 +1,6 @@
 const mclaren = {
-    shortName : "McLaren",
-    longName : "McLaren Mastercard F1 Team",
+    shortName: "McLaren",
+    longName: "McLaren Mastercard F1 Team",
     color: "#F47600",
     piloto1: "Lando Norris",
     piloto2: "Oscar Piastri",
@@ -9,48 +9,48 @@ const mclaren = {
 }
 
 const ferrari = {
-    shortName : "Ferrari",
-    longName : "Scuderia Ferrari HP",
+    shortName: "Ferrari",
+    longName: "Scuderia Ferrari HP",
     color: "#ED1131",
     piloto1: "Charles Leclerc",
-    piloto2 : "Lewis Hamilton",
+    piloto2: "Lewis Hamilton",
     img: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Ferrari/G_V027BWQAASNgK.webp",
     link: "https://www.ferrari.com/en-EN/formula1",
 }
 
 const mercedes = {
-    shortName : "Mercedes",
-    longName : "Mercedes-AMG Petronas Formula One Team",
+    shortName: "Mercedes",
+    longName: "Mercedes-AMG Petronas Formula One Team",
     color: "#00D7B6",
     piloto1: "George Russel",
-    piloto2 : "Kimi Antonelli",
+    piloto2: "Kimi Antonelli",
     img: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Mercedes/Mercedes-AMG%20F1%20W17%20E%20PERFORMANCE%20-%20GR%206.webp",
     link: "https://www.mercedesamgf1.com",
 }
 
 const williams = {
-    shortName : "Williams",
-    longName : "Atlassian Williams F1 Team",
+    shortName: "Williams",
+    longName: "Atlassian Williams F1 Team",
     color: "#1868DB",
     piloto1: "Alex Albon",
-    piloto2 : "Carlos Sainz",
+    piloto2: "Carlos Sainz",
     img: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Williams/f34h_v4-Sainz_169.webp",
     link: "https://www.williamsf1.com",
 }
 
 const haas = {
-    shortName : "Haas",
-    longName : "TGR Haas F1 Team",
+    shortName: "Haas",
+    longName: "TGR Haas F1 Team",
     color: "#9C9FA2",
     piloto1: "Oliver Bearman",
-    piloto2 : "Esteban Ocon",
+    piloto2: "Esteban Ocon",
     img: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Haas/10-Photos-16x9-EO.0002.webp",
     link: "https://www.haasf1team.com",
 }
 
 const redbull = {
-    shortName : "Red Bull",
-    longName : "Oracle Red Bull Racing",
+    shortName: "Red Bull",
+    longName: "Oracle Red Bull Racing",
     color: "#3671C6",
     piloto1: "Max Verstappen",
     piloto2: "Isaac Hadjar",
@@ -59,8 +59,8 @@ const redbull = {
 }
 
 const astonmartin = {
-    shortName : "Aston Martin",
-    longName : "Aston Martin Aramco F1 Team",
+    shortName: "Aston Martin",
+    longName: "Aston Martin Aramco F1 Team",
     color: "#229971",
     piloto1: "Fernando Alonso",
     piloto2: "Lance Stroll",
@@ -69,8 +69,8 @@ const astonmartin = {
 }
 
 const alpine = {
-    shortName : "Alpine",
-    longName : "BWT Alpine F1 Team",
+    shortName: "Alpine",
+    longName: "BWT Alpine F1 Team",
     color: "#0093CC",
     piloto1: "Pierre Gasly",
     piloto2: "Franco Colapinto",
@@ -79,8 +79,8 @@ const alpine = {
 }
 
 const rb = {
-    shortName : "VCARB",
-    longName : "Visa Cash App RB Formula One Team",
+    shortName: "VCARB",
+    longName: "Visa Cash App RB Formula One Team",
     color: "#6692FF",
     piloto1: "Liam Lawson",
     piloto2: "Arvid lindblad",
@@ -89,8 +89,8 @@ const rb = {
 }
 
 const audi = {
-    shortName : "Audi",
-    longName : "Audi Revolut F1 Team",
+    shortName: "Audi",
+    longName: "Audi Revolut F1 Team",
     color: "#F50537",
     piloto1: "Nico Hülkenberg",
     piloto2: "Gabriel Bortoleto",
@@ -99,8 +99,8 @@ const audi = {
 }
 
 const cadillac = {
-    shortName : "Cadillac",
-    longName : "Cadillac F1 Team",
+    shortName: "Cadillac",
+    longName: "Cadillac F1 Team",
     color: "#FFFFFF",
     piloto1: "Sergio Perez",
     piloto2: "Valteri Bottas",
@@ -157,7 +157,7 @@ teams.forEach(({ team, divId }) => {
     const div = document.getElementById(divId);
     div.onmouseover = () => on_hover(team, div);
     div.onmouseleave = () => off_hover(team, div);
-    off_hover(team,div);
+    off_hover(team, div);
 });
 
 
@@ -167,16 +167,16 @@ function leerContrasena1() {
     var passLength1 = document.getElementById("contraseña1").value.length;
     var passLength2 = document.getElementById("contraseña2").value.length;
 
-    
-    if (passLength1 > 7 && passLength2 > 7){
-        if (con1 === con2){
+
+    if (passLength1 > 7 && passLength2 > 7) {
+        if (con1 === con2) {
             console.log("Contraseña correcta")
             mensajeContraseña.innerHTML = `
             <div class="has-text-success">
                 Contraseña correcta
             </div>
             `
-        } else{
+        } else {
             console.log("Contraseña incorrecta")
             mensajeContraseña.innerHTML = `
             <div class="has-text-danger">
@@ -184,7 +184,7 @@ function leerContrasena1() {
             </div>
             `
         }
-    } else{
+    } else {
         mensajeContraseña.innerHTML = `
             <div class="has-text-warning">
                 Escribe una contraseña que contenga almenos 8 caracteres
@@ -193,7 +193,7 @@ function leerContrasena1() {
     }
 }
 
-document.getElementById("botonConfirmarContraseña").onclick = function() {leerContrasena1()};
+document.getElementById("botonConfirmarContraseña").onclick = function () { leerContrasena1() };
 
 const obtenerPrecioTotal = () => {
     const cant1 = Number(document.getElementById("cantidad1").value);
@@ -203,14 +203,19 @@ const obtenerPrecioTotal = () => {
     const prec2 = cant2 * balatro.price;
     const prec3 = cant3 * celeste.price;
 
-    let precioTotal = prec1+prec2+prec3;
+    let precioTotal = prec1 + prec2 + prec3;
+    let descuentoAplicado;
 
-    if((cant1 + cant2 + cant3) >= 5){
-        precioTotal = precioTotal*0.85;
+    if ((cant1 + cant2 + cant3) >= 5) {
+        descuentoAplicado = "El descuento ha sido aplicado"
+        precioTotal = precioTotal * 0.85;
+    } else {
+        descuentoAplicado = "";
     }
 
     const contenedorTotal = document.getElementById("precioTotal");
     contenedorTotal.innerHTML = `
+        ${descuentoAplicado} <br>
         Precio total: ${precioTotal}$
     `;
 }
@@ -225,16 +230,61 @@ document.querySelectorAll(".selectorP").forEach(input => {
 });
 
 function setPrecios() {
-    precio1.innerHTML=`
+    precio1.innerHTML = `
     <b>Precio: ${hornet.price}$</b> 
     `;
-    precio2.innerHTML=`
+    precio2.innerHTML = `
     <b>Precio: ${balatro.price}$</b> 
     `;
-    precio3.innerHTML=`
+    precio3.innerHTML = `
     <b>Precio: ${celeste.price}$</b> 
     `;
 }
 
 setPrecios();
 
+const mostrarTitulo1 = () => {
+    divTituloTienda.innerHTML = `
+    PLEEEASEEEEEE, BUY THIS FOR MMEEEEE I NEEEDDD THEMMMMMM I SWEAR TO GOD I WOULD KILL FOR THESE DEAR GOD
+    `;
+    divTituloTienda.onclick = mostrarTitulo2;
+}
+
+const mostrarTitulo2 = () => {
+    divTituloTienda.innerHTML = `
+    Bienvenido a la tienda de los mejores juegos indies
+    `;
+    divTituloTienda.onclick = mostrarTitulo1;
+}
+
+divTituloTienda.onclick = mostrarTitulo2;
+//------------------------------------------------------------------------------
+const hornetImg1 = () => {
+    producto1.src = "https://preview.redd.it/drew-hornet-smoking-a-blunt-to-celebrate-silksong-v0-466clfrdetnf1.png?width=640&crop=smart&auto=webp&s=885db0effae68db625cbd6e38331b3e8be71c756";
+    producto1.onclick = hornetImg2;
+}
+const hornetImg2 = () => {
+    producto1.src = "https://www.fangamer.com/cdn/shop/products/product_HK_hornet_plush_main_55c63d68-e558-4387-9b7d-d3d030627658.png?crop=center&height=600&v=1691698061&width=900";
+    producto1.onclick = hornetImg1;
+}
+producto1.onclick = hornetImg1;
+
+const balatroImg1 = () => {
+    producto2.src = "https://i.ytimg.com/vi/VbuU40z9HLA/mqdefault.jpg";
+    producto2.onclick = balatroImg2;
+}
+const balatroImg2 = () => {
+    producto2.src = "https://www.fangamer.com/cdn/shop/files/product_Balatro_Playing-Cards_main_62bf66db-f6b4-4292-b200-2a0d7597d3e8.png?crop=center&height=600&v=1732126603&width=900";
+    producto2.onclick = balatroImg1;
+}
+producto2.onclick = balatroImg1;
+
+const celesteImg1 = () => {
+    producto3.src = "https://external-preview.redd.it/shitpost-yo-play-celeste-its-so-good-celeste-v0-Y4ODru5mliDzYMUiH_dzOWGjB4aqzvjS9P6ke7BFX-A.png?format=pjpg&auto=webp&s=46b4be0c2b192d6d767ea911f9b1a9eb05839c43"; //shitpost
+    producto3.onclick = celesteImg2;
+}
+const celesteImg2 = () => {
+    producto3.src = "https://images-na.ssl-images-amazon.com/images/I/6127A+l9yIL._AC_UL600_SR600,600_.jpg";
+    producto3.onclick = celesteImg1;
+}
+producto3.onclick = celesteImg1;
