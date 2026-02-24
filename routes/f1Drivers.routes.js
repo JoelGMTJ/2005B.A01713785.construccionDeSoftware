@@ -174,28 +174,27 @@ const html_footer = `
 </html>
 `;
 
-// Middleware
-// router.use((request, response, next) => {
-//     console.log('Middleware!');
-//     next(); //Le permite a la petición avanzar hacia el siguiente middleware
-// });
-
 router.use((request, response, next) => {
     let html_body = `
         <div class="content px-6 mx-6">
 
-            <h1 id="mainPageTitle">The F1 2026 grid</h1>
+            <h1 id="mainPageTitle">The F1 2026 drivers</h1>
             <div class="columns" id="topColumn">
             `;
     for (let i = 0; i < teams.length; i++) {
         html_body += `
                 <div class="column mx-0.5">
                     <div style="color:${teams[i].color}">
-                        ${teams[i].longName}
+                        ${teams[i].shortName}
                     </div>   
-                <figure class="image is-16by9">
-                    <img class="" src="${teams[i].imgLivery}" alt="${teams[i].shortName} livery">
-                </figure>
+                <div class="columns">
+                    <figure class="image column">
+                        <img class="" src="${teams[i].imgPiloto1}" alt="${teams[i].shortName} livery">
+                    </figure>
+                    <figure class="image column">
+                        <img class="" src="${teams[i].imgPiloto2}" alt="${teams[i].shortName} livery">
+                    </figure>
+                </div>
                 <div>
                     ${teams[i].piloto1} & ${teams[i].piloto2}
                 </div>
@@ -223,6 +222,5 @@ router.use((request, response, next) => {
 
     response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
 });
-
 
 module.exports = router;
