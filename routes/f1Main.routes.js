@@ -170,6 +170,22 @@ const html_navBar = `
     <a class="button is-link" href="/quiz">Quiz</a> <br>
 `
 
+const html_pregunta = `
+    <p>
+        <b>Describe el archivo package.json.</b> <br>
+        Cuando descargamos npm y lo iniciamos en 
+        nuestra carpeta de proyecto se va a comenzar a configurar, despues se 
+        va a crear un archivo llamado package.json, el cual va a guardar nuestras 
+        preferencias, si queremos tener algun script en específico que corra, las
+        dependencias que necesita nuestro proyecto, la licencia entre otras cosas. <br>
+        Esto nos ayuda a que si un proyecto corre en algun lado, simplemente
+        copio las preferencias del archivo y las uso en otro dispositivo y deberia
+        de funcionar correctamente. <br>
+        En cuanto a un archivo json es un archivo de JavaScript de Notacion de Objetos
+        que guarda datos en una forma que js los pueda acceder fácilmente.
+    </p>
+`
+
 const html_footer = `
   </body>
 </html>
@@ -182,7 +198,7 @@ router.use((request, response, next) => {
                 `;
 
 
-    response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
+    response.send(html_header + html_navBar + html_pregunta + html_footer); //Manda la respuesta
 });
 
 module.exports = router;
