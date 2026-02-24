@@ -175,14 +175,46 @@ const html_footer = `
 </html>
 `;
 
-router.use((request, response, next) => {
-    let html_body = `
-                <br>
-                Bienvenido a mi página que contiene todo sobre Fórmula 1    
-                `;
+const html_quiz = `
+    <form action="/quiz" method="POST">
+        <div class="field">
+            <label for="equipo" class="label">Equipo Favorito</label>
+            <div class="control">
+                <input id="equipo" name="equipo" class="input" type="text" placeholder="e.g Red Bull">
+            </div>
+        </div>
 
+        <div class="field">
+            <label for="Piloto" class="label">Piloto</label>
+            <div class="control">
+                <input id="Piloto" name="Piloto" class="input" type="text" placeholder="e.g. Alex Albon">
+            </div>
+        </div>
 
-    response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
+        <div class="field">
+            <label for="prediccionGanador" class="label">¿Quién crees que va a ganar?</label>
+            <div class="control">
+                <input id="prediccionGanador" name="prediccionGanador" class="input" type="text" placeholder="Obviamente va a ganar...">
+            </div>
+        </div>
+
+        <input class="button is-primary" type="submit" value="Enviar resultados">
+    </form>
+`;
+
+const html_quizConfirmation = `
+    Gracias por contestar la encuesta :)
+`
+
+router.get('/',(request, response, next) => {
+    response.send(html_header + html_navBar + html_quiz + html_footer); //Manda la respuesta
+});
+
+//Ver si puedo preguntar sobre esto que no entendi muy claro porque se necesita de poner si se supone que ya estoy dentro de la ruta, PREGUNTAR EN CLASE
+//Quizas tambien preguntar esto de que si los cuadros de texto funcionan entre paginas pues tienen el mismo id o class or smth
+router.post('/',(request, response, next) => {
+    console.log(request.body);
+    response.send(html_header + html_navBar + html_quizConfirmation + html_footer); //Manda la respuesta
 });
 
 module.exports = router;

@@ -106,7 +106,7 @@ const teams = [
         imgPiloto2: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/E/ESTOCO01_Esteban_Ocon/estoco01.png"
     },
 
-    {   
+    {
         shortName: "Audi",
         longName: "Audi Revolut F1 Team",
         color: "#F50537",
@@ -159,20 +159,45 @@ const html_header = `
   <section class="section">
     <div class="container">
       <h1 class="title">
-        <a href="/" style="color:red">Fórmula 1</a>
+        <a href="/main" style="color:red">Fórmula 1</a>
       </h1>
         
 `;
 
 const html_navBar = `
     <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-danger" href="/teams">Teams</a> <br>
+    <a class="button is-primary" href="/teams">Teams</a>
+    <a class="button is-link" href="/quiz">Quiz</a>
+    <a class="button is-link" href="/drivers/mv1">Max Verstappen</a>
+    <a class="button is-link" href="/drivers/op81">Oscar Piastri</a> <br>
+
 `
 
 const html_footer = `
   </body>
 </html>
 `;
+
+router.use('/mv1', (request, response, next) => {
+    const mv1Description = `
+    Max Emilian Verstappen es un piloto de automovilismo neerlandés nacido en Bélgica. Ganó el Campeonato Mundial de Karting en 2013 y finalizó tercero en el Campeonato Europeo de Fórmula 3 de la FIA en su debut en monoplazas. Debutó en Fórmula 1 con la escudería Toro Rosso en 2015. Desde 2016 es piloto del equipo Red Bull Racing, con el que se consagró tetracampeón del Campeonato Mundial de Fórmula 1 tras los títulos obtenidos en 2021, 2022, 2023 y 2024. Además, resultó subcampeón en 2025 y logró dos terceros puestos en 2019 y 2020. <br> <b>Informacion obtenida de <a href="https://es.wikipedia.org/wiki/Max_Verstappen">Wikipedia</a></b>
+    <br>
+    <p class="is-size-7 has-text-right">Debido a como funciona la pagina aun no pude agregar el link a la imagen del piloto, lo voy a hacer otro dia para que no tengas que entrar por un boton todo feo</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg/330px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg"></img>
+    `
+    response.send(html_header + html_navBar + mv1Description + html_footer); //Manda la respuesta
+});
+
+router.use('/op81', (request, response, next) => {
+    const mv1Description = `
+    Oscar Jack Piastri (Melbourne, Victoria, 6 de abril de 2001) es un piloto de automovilismo australiano. Entre los años 2019 y 2021 logró tres títulos seguidos: Eurocopa de Fórmula Renault, Fórmula 3 y Fórmula 2 (estos dos últimos como debutante), y resultó subcampeón de la F4 Británica en 2017.[1]​ En 2021 fue miembro de la Academia Alpine y piloto reserva de Alpine en 2022.[2]​ Desde 2023 es piloto de McLaren en Fórmula 1, resultando tercero en 2025.    <br>
+    <br> <b>Informacion obtenida de <a href="https://es.wikipedia.org/wiki/Oscar_Piastri">Wikipedia</a></b>
+    <br>
+    <p class="is-size-7 has-text-right">Debido a como funciona la pagina aun no pude agregar el link a la imagen del piloto, lo voy a hacer otro dia para que no tengas que entrar por un boton todo feo</p>
+    <img src="https://media.revistagq.com/photos/68872b00c4f5c4440c34aebd/16:9/w_2560%2Cc_limit/2227250678"></img>
+    `
+    response.send(html_header + html_navBar + mv1Description + html_footer); //Manda la respuesta
+});
 
 router.use((request, response, next) => {
     let html_body = `
@@ -206,5 +231,6 @@ router.use((request, response, next) => {
 
     response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
 });
+
 
 module.exports = router;

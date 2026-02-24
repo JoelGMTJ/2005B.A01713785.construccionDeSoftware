@@ -10,11 +10,16 @@ app.use('/teams', rutas_f1teams);
 const rutas_f1drivers = require('./routes/f1Drivers.routes');
 app.use('/drivers', rutas_f1drivers);
 
+const rutas_f1quiz = require('./routes/f1Quiz.routes');
+app.use('/quiz', rutas_f1quiz);
+
 const rutas_f1main = require('./routes/f1main.routes');
-app.use(rutas_f1main);
+app.use('/main', rutas_f1main);
 
 app.use((request, response, next) => {
     response.status(404).send("La ruta no existe");
 })
+
+//TO-DO si puedo agregar algo de que las paginas sean /main/drivers en lugar de solo /drivers o /teams
 
 app.listen(3000); 

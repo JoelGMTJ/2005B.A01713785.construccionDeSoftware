@@ -159,14 +159,15 @@ const html_header = `
   <section class="section">
     <div class="container">
       <h1 class="title">
-        <a href="/" style="color:red">Fórmula 1</a>
+        <a href="/main" style="color:red">Fórmula 1</a>
       </h1>
         
 `;
 
 const html_navBar = `
     <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-danger" href="/teams">Teams</a> <br>
+    <a class="button is-primary" href="/teams">Teams</a>
+    <a class="button is-link" href="/quiz">Quiz</a> <br>
 `
 
 const html_footer = `
