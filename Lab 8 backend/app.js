@@ -8,112 +8,117 @@ filesystem.writeFileSync("hola.txt", "Hola mundo");
 
 const http = require("http");
 
-const html = `
-    <!DOCTYPE html>
-<html data-theme="dark">
-
-<head>
+const html_header = `
+<!DOCTYPE html>
+<html>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prueba</title>
+    <title>Esto es una prueba</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <link rel="stylesheet" href="css/formato.css">
-</head>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        <a href="/" style="color:red">Fórmula 1</a>
+      </h1>
+        
+`;
 
-<body>
-
-    <div class="content px-6 mx-6">
-
-        <h1 id="mainPageTitle">The F1 2026 grid</h1>
-        <div class="columns" id="topColumn">
-            <div class="column mx-0.5" id="div_mclaren"></div>
-            <div class="column mx-0.5" id="div_mercedes"></div>
-            <div class="column mx-0.5" id="div_redbull"></div>
-            <div class="column mx-0.5" id="div_ferrari"></div>
-        </div>
-        <div class="columns">
-            <div class="column mx-0.5" id="div_williams"></div>
-            <div class="column mx-0.5" id="div_rb"></div>
-            <div class="column mx-0.5" id="div_astonmartin"></div>
-            <div class="column mx-0.5" id="div_haas"></div>
-        </div>
-        <div class="columns">
-            <div class="column mx-0.5" id="div_audi"></div>
-            <div class="column mx-0.5" id="div_alpine"></div>
-            <div class="column mx-0.5" id="div_cadillac"></div>
-            <div class="column mx-0.5"></div>
-
-        </div>
-
-        <div class="notification is-primary">
-            <button class="delete"></button>
-            Y con esto terminamos de ver el playground, ahora vamos con los ejercicios del laboratorio 6
-        </div>
-    </div>
-
-    <p class="content px-6 mx-6">Yo voy a hacer las 2 opciones por que quiero practicar, espero no sea mucho problema
-    </p>
-
-
-    <div class="instruccion px-6 mx-6">
-        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para validar passwords. La página debe tener una
-        forma con 2 campos, el campo de password, y el campo de verificar password. Utiliza al máximo tu creatividad e
-        ingeniería para que la página sea un validador de passwords de estado del arte, con la mejor experiencia para el
-        usuario.
-    </div>
-    <div class="columns is-centered">
-        <div class="respuesta px-6 mx-6 box column" id="respuesta1">
-            <br>
-            Escribe la contraseña para tu usuario, la contraseña tiene que tener almenos 8 caracteres
-            <br><br>
-            <div id="primeraContraseña">
-                <input type="password" placeholder="Escribe tu contraseña" class="input shortPassword" id="contraseña1">
-            </div>
-            <div id="segundaContraseña">
-                <input type="password" placeholder="Confirma tu contraseña" class="input shortPassword"
-                    id="contraseña2">
-            </div>
-            <div id="mensajeContraseña">
-                Escribe una contraseña
-            </div>
-            <br>
-            <div>
-                <button class="button is-dark is-primary" id="botonConfirmarContraseña">Validar</button>
-            </div>
-            <br>
-
-        </div>
-    </div>
-
-
-    <div class="instruccion px-6 mx-6">
-        Con JavaScript y HTML5 [y quizás CSS], desarrolla una página para vender 3 productos de tu interés, con los
-        precios y promociones a tu gusto. La página debe permitir al usuario escoger la cantidad de unidades de cada
-        producto, y debe mostrar el precio total, el IVA que se está cargando, y toda la información que consideres
-        pertinente para que la experiencia del usuario sea la mejor. La página debe validar los rangos de las unidades
-        de cada producto.
-    </div>
-    <div class="respuesta px-6 mx-6" id="respuesta2">
-        Respuesta 2
-    </div>
-
-    <div>
-        Fuentes usadas para la información <br>
-        <a class="link" href="https://www.youtube.com">link</a>
-    </div>
-
-    <script src="js/dom.js"></script>
-</body>
-
+const html_footer = `
+  <!-- Aqui podrían ir los archivos js -->
+  </body>
 </html>
 `;
 
-const server = http.createServer((request, response) => {  
-//    console.log(request);  
-//    console.log(response);
+const html_body = `
+
+`;
+
+const html_problemDescription = `
+<h2 class="subtitle">Descripción del problema</h2>
+<b>Este problema lo resolví como parte de un evento llamado "Calendario de RAMviento en el cual
+publicaban problemas a traves de codeforces de nivel fácil a medio, lo resolví a inicios de Diciembre 2025 en C++ <br>
+Las respuestas estan en la consola de la app de node.js</b> <br><br>
+  Alice and Bob are decorating a Christmas Tree. <br><br>
+  Alice wants only 3
+ types of ornaments to be used on the Christmas Tree: yellow, blue and red. They have y
+ yellow ornaments, b
+ blue ornaments and r
+ red ornaments. <br><br>
+ In Bob's opinion, a Christmas Tree will be beautiful if: <br><br>
+ the number of blue ornaments used is greater by exactly 1
+ than the number of yellow ornaments, and <br>
+ the number of red ornaments used is greater by exactly 1
+ than the number of blue ornaments. <br>
+ That is, if they have 8
+ yellow ornaments, 13
+ blue ornaments and 9
+ red ornaments, we can choose 4
+ yellow, 5
+ blue and 6
+ red ornaments (5=4+1
+ and 6=5+1
+). <br><br>
+Alice wants to choose as many ornaments as possible, but she also wants the Christmas Tree to be beautiful according to Bob's opinion.
+
+<br><br>
+In the example two paragraphs above, we would choose 7
+ yellow, 8
+ blue and 9
+ red ornaments. If we do it, we will use 7+8+9=24
+ ornaments. That is the maximum number. <br><br>
+ Since Alice and Bob are busy with preparing food to the New Year's Eve, they are asking you to find out the maximum number of ornaments that can be used in their beautiful Christmas Tree! <br><br>
+ It is guaranteed that it is possible to choose at least 6
+ (1+2+3=6
+) ornaments. <br><br>
+`
+
+const arrNum1 = [
+  75,
+  15,
+  78,
+  95,
+  20
+]
+
+function returnAvg(arr){
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++){
+    sum+= arr[i];
+  }
+  
+  const promedio = sum/arr.length;
+  return promedio;
+}
+
+console.log(returnAvg(arrNum1))
+
+function christmasTree(yellow, blue, red){
+ 
+    blue = blue - 1;
+    red = red - 2;
+ 
+    let least = yellow;
+    if (least > blue){
+        least = blue;
+    } 
+    if (least > red){
+        least = red;
+    }
+ 
+    return (least * 3) + 3;
+}
+
+console.log(christmasTree(13, 3, 6))
+
+const server = http.createServer((request, response) => {
+    // console.log(request);  
+    // console.log(response);
     console.log(request.url);
     response.setHeader('Content-Type', 'text/html');
-    response.write(html);
+    response.write(html_header + html_body + html_problemDescription+ html_footer);
     response.end();
 });
 
