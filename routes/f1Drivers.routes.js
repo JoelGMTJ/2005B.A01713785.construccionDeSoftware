@@ -166,7 +166,7 @@ const html_header = `
 
 const html_navBar = `
     <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-danger" href="/teams">Teams</a>
+    <a class="button is-danger" href="/teams">Teams</a> <br>
 `
 
 const html_footer = `
@@ -178,42 +178,26 @@ router.use((request, response, next) => {
     let html_body = `
         <div class="content px-6 mx-6">
 
-            <h1 id="mainPageTitle">The F1 2026 drivers</h1>
-            <div class="columns" id="topColumn">
+            <h1 id="mainPageTitle">The 2026 drivers</h1>
             `;
     for (let i = 0; i < teams.length; i++) {
         html_body += `
                 <div class="column mx-0.5">
-                    <div style="color:${teams[i].color}">
-                        ${teams[i].shortName}
-                    </div>   
-                <div class="columns">
+                    <div class="columns is-vcentered">
+                    <figure class="image column">
+                        <img class="" src="${teams[i].logo}" alt="${teams[i].shortName} livery">
+                    </figure>
                     <figure class="image column">
                         <img class="" src="${teams[i].imgPiloto1}" alt="${teams[i].shortName} livery">
+                        <p class="has-text-centered">${teams[i].piloto1}</p>
                     </figure>
                     <figure class="image column">
                         <img class="" src="${teams[i].imgPiloto2}" alt="${teams[i].shortName} livery">
+                        <p  class="has-text-centered">${teams[i].piloto2}</p>
                     </figure>
                 </div>
-                <div>
-                    ${teams[i].piloto1} & ${teams[i].piloto2}
-                </div>
                 </div>
             `
-
-        if (i == 10) {
-            html_body += `
-                <div class="column mx-0.5"><br>   
-                
-                </div>
-            `
-        }
-        if ((i + 1) % 4 == 0) {
-            html_body += `
-                    </div>
-                    <div class="columns">
-                    `;
-        }
     }
     html_body += `
 

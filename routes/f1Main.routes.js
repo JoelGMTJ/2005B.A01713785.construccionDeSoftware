@@ -174,51 +174,14 @@ const html_footer = `
 </html>
 `;
 
-// Middleware
-// router.use((request, response, next) => {
-//     console.log('Middleware!');
-//     next(); //Le permite a la petición avanzar hacia el siguiente middleware
-// });
-
 router.use((request, response, next) => {
     let html_body = `
-        <div class="content px-6 mx-6">
+                <br>
+                Bienvenido a mi página que contiene todo sobre Fórmula 1    
+                `;
 
-            <h1 id="mainPageTitle">The 2026 grid</h1>
-            <div class="columns" id="topColumn">
-            `;
-    for (let i = 0; i < teams.length; i++) {
-        html_body += `
-                <div class="column mx-0.5">
-                    <div style="color:${teams[i].color}">
-                        ${teams[i].longName}
-                    </div>   
-                <figure class="image is-16by9">
-                    <img class="" src="${teams[i].imgLivery}" alt="${teams[i].shortName} livery">
-                </figure>
-                </div>
-            `
-
-        if (i == 10) {
-            html_body += `
-                <div class="column mx-0.5"><br>   
-                
-                </div>
-            `
-        }
-        if ((i + 1) % 4 == 0) {
-            html_body += `
-                    </div>
-                    <div class="columns">
-                    `;
-        }
-    }
-    html_body += `
-                </div>
-            `;
 
     response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
 });
-
 
 module.exports = router;
