@@ -1,5 +1,5 @@
 {
   "equipo": "Ferrari",
-  "piloto": "Red Bull",
+  "piloto": "Max Verstappen ",
   "prediccionGanador": "George Russell"
 }
