@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const filesystem = require('fs');
+
 const teams = [
     {
         shortName: "McLaren",
@@ -185,9 +187,9 @@ const html_quiz = `
         </div>
 
         <div class="field">
-            <label for="Piloto" class="label">Piloto</label>
+            <label for="piloto" class="label">Piloto</label>
             <div class="control">
-                <input id="Piloto" name="Piloto" class="input" type="text" placeholder="e.g. Alex Albon">
+                <input id="piloto" name="piloto" class="input" type="text" placeholder="e.g. Alex Albon">
             </div>
         </div>
 
@@ -214,6 +216,7 @@ router.get('/',(request, response, next) => {
 //Quizas tambien preguntar esto de que si los cuadros de texto funcionan entre paginas pues tienen el mismo id o class or smth
 router.post('/',(request, response, next) => {
     console.log(request.body);
+    filesystem.writeFileSync("QuizF1.txt", JSON.stringify(request.body, null, 2));
     response.send(html_header + html_navBar + html_quizConfirmation + html_footer); //Manda la respuesta
 });
 
