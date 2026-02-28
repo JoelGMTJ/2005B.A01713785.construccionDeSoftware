@@ -49,7 +49,7 @@ const teams = [
         piloto2: "Isaac Hadjar",
         imgLivery: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Red%20Bull/SI202601150723.webp",
         link: "https://www.redbullracing.com/int-en",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Red_Bull_Racing_Logo_2026.svg/500px-Red_Bull_Racing_Logo_2026.svg.png",
+        logo: "https://www.oracle.com/a/ocom/img/customerlogo-redbull-racing-clr.svg",
         imgPiloto1: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png",
         imgPiloto2: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/I/ISAHAD01_Isaac_Hadjar/isahad01.png"
     },

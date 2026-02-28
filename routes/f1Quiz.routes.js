@@ -51,7 +51,7 @@ const teams = [
         piloto2: "Isaac Hadjar",
         imgLivery: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Red%20Bull/SI202601150723.webp",
         link: "https://www.redbullracing.com/int-en",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Red_Bull_Racing_Logo_2026.svg/500px-Red_Bull_Racing_Logo_2026.svg.png",
+        logo: "https://www.oracle.com/a/ocom/img/customerlogo-redbull-racing-clr.svg",
         imgPiloto1: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png",
         imgPiloto2: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/I/ISAHAD01_Isaac_Hadjar/isahad01.png"
     },
@@ -147,35 +147,6 @@ const teams = [
         imgPiloto2: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/V/VALBOT01_Valtteri_Bottas/valbot01.png"
     }
 ];
-
-const html_header = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Esto es una prueba</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        <a href="/main" style="color:red">Fórmula 1</a>
-      </h1>
-        
-`;
-
-const html_navBar = `
-    <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-primary" href="/teams">Teams</a>
-    <a class="button is-link" href="/quiz">Quiz</a> <br>
-`
-
-const html_footer = `
-  </body>
-</html>
-`;
 
 const html_quiz = `
     <form action="/quiz" method="POST">

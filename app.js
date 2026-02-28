@@ -28,6 +28,13 @@ app.listen(PORT, '0.0.0.0', () => {
     qrcode.generate(url, {small: true});
 });
 
+// - hace que lo que le incluyas si se ejecute el codigo, y el = hace que solo llegue como string
+// <%= nombre_variable %> para que el codigo se ejecute en el servidor
+
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 

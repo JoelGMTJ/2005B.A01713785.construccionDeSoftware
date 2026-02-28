@@ -49,7 +49,7 @@ const teams = [
         piloto2: "Isaac Hadjar",
         imgLivery: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/2026/Red%20Bull/SI202601150723.webp",
         link: "https://www.redbullracing.com/int-en",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Red_Bull_Racing_Logo_2026.svg/500px-Red_Bull_Racing_Logo_2026.svg.png",
+        logo: "https://www.oracle.com/a/ocom/img/customerlogo-redbull-racing-clr.svg",
         imgPiloto1: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png",
         imgPiloto2: "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/I/ISAHAD01_Isaac_Hadjar/isahad01.png"
     },
@@ -146,38 +146,6 @@ const teams = [
     }
 ];
 
-const html_header = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Esto es una prueba</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        <a href="/main" style="color:red">Fórmula 1</a>
-      </h1>
-        
-`;
-
-const html_navBar = `
-    <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-primary" href="/teams">Teams</a>
-    <a class="button is-link" href="/quiz">Quiz</a>
-    <a class="button is-link" href="/drivers/mv1">Max Verstappen</a>
-    <a class="button is-link" href="/drivers/op81">Oscar Piastri</a> <br>
-
-`
-
-const html_footer = `
-  </body>
-</html>
-`;
-
 router.use('/mv1', (request, response, next) => {
     const mv1Description = `
     Max Emilian Verstappen es un piloto de automovilismo neerlandés nacido en Bélgica. Ganó el Campeonato Mundial de Karting en 2013 y finalizó tercero en el Campeonato Europeo de Fórmula 3 de la FIA en su debut en monoplazas. Debutó en Fórmula 1 con la escudería Toro Rosso en 2015. Desde 2016 es piloto del equipo Red Bull Racing, con el que se consagró tetracampeón del Campeonato Mundial de Fórmula 1 tras los títulos obtenidos en 2021, 2022, 2023 y 2024. Además, resultó subcampeón en 2025 y logró dos terceros puestos en 2019 y 2020. <br> <b>Informacion obtenida de <a href="https://es.wikipedia.org/wiki/Max_Verstappen">Wikipedia</a></b>
@@ -200,36 +168,14 @@ router.use('/op81', (request, response, next) => {
 });
 
 router.use((request, response, next) => {
-    let html_body = `
-        <div class="content px-6 mx-6">
+    response.render('drivers.ejs'); //Manda la respuesta
+});
 
-            <h1 id="mainPageTitle">The 2026 drivers</h1>
-            `;
-    for (let i = 0; i < teams.length; i++) {
-        html_body += `
-                <div class="column mx-0.5">
-                    <div class="columns is-vcentered">
-                    <figure class="image column">
-                        <img class="" src="${teams[i].logo}" alt="${teams[i].shortName} livery">
-                    </figure>
-                    <figure class="image column">
-                        <img class="" src="${teams[i].imgPiloto1}" alt="${teams[i].shortName} livery">
-                        <p class="has-text-centered">${teams[i].piloto1}</p>
-                    </figure>
-                    <figure class="image column">
-                        <img class="" src="${teams[i].imgPiloto2}" alt="${teams[i].shortName} livery">
-                        <p  class="has-text-centered">${teams[i].piloto2}</p>
-                    </figure>
-                </div>
-                </div>
-            `
-    }
-    html_body += `
-
-                </div>
-            `;
-
-    response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
+//esto es lo que le manda A a donde se necesite llamado como B
+//Osea que manda A (teams) a las partes que lo necesiten y lo manda como una
+//variable B (teams)
+router.use((request, response, next) => {
+    response.render('list', {teams: teams}); 
 });
 
 
