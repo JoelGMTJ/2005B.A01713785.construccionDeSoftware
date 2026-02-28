@@ -31,6 +31,8 @@ app.listen(PORT, '0.0.0.0', () => {
 // - hace que lo que le incluyas si se ejecute el codigo, y el = hace que solo llegue como string
 // <%= nombre_variable %> para que el codigo se ejecute en el servidor
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));

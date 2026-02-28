@@ -1,5 +1,5 @@
 {
-  "equipo": "Ferrari",
-  "piloto": "Max Verstappen ",
-  "prediccionGanador": "George Russell"
+  "equipo": "Williams",
+  "piloto": "Oscar Piastry",
+  "prediccionGanador": "Franco Colapinto"
 }

@@ -1,4 +1,40 @@
 <%- include('includes/__header') %>
 <%- include('includes/__navBar') %>
-<!-- Body -->
+
+
+        <div class="content px-6 mx-6">
+
+            <h1 id="mainPageTitle">The 2026 grid</h1>
+            <div class="columns" id="topColumn">
+
+    <% for (let i = 0; i < teams.length; i++) { %>
+
+                <div class="column mx-0.5">
+                    <div style=" color: <%= teams[i].color%>">
+                        <%= teams[i].longName %>
+                    </div>   
+                <figure class="image is-16by9">
+                    <img class="" src="<%= teams[i].imgLivery%>" alt="<%= teams[i].shortName %> livery">
+                </figure>
+                </div>
+
+
+        <% if (i == 10) { %>
+
+                <div class="column mx-0.5"><br>   
+                
+                </div>
+            
+        <% } %>
+        <% if ((i + 1) % 4 == 0) { %>
+
+                    </div>
+                    <div class="columns">
+                    
+        <% } %>
+    <% } %>
+
+                </div>
+
+
 <%- include('includes/__footer') %>

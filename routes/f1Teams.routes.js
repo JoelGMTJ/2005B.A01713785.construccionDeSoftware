@@ -146,80 +146,12 @@ const teams = [
     }
 ];
 
-const html_header = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Esto es una prueba</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        <a href="/main" style="color:red">Fórmula 1</a>
-      </h1>
-        
-`;
-
-const html_navBar = `
-    <a class="button is-danger" href="/drivers">Drivers</a>
-    <a class="button is-primary" href="/teams">Teams</a>
-    <a class="button is-link" href="/quiz">Quiz</a> <br>
-`
-
-const html_footer = `
-  </body>
-</html>
-`;
-
-// Middleware
-// router.use((request, response, next) => {
-//     console.log('Middleware!');
-//     next(); //Le permite a la petición avanzar hacia el siguiente middleware
-// });
-
 router.use((request, response, next) => {
-    let html_body = `
-        <div class="content px-6 mx-6">
-
-            <h1 id="mainPageTitle">The 2026 grid</h1>
-            <div class="columns" id="topColumn">
-            `;
-    for (let i = 0; i < teams.length; i++) {
-        html_body += `
-                <div class="column mx-0.5">
-                    <div style="color:${teams[i].color}">
-                        ${teams[i].longName}
-                    </div>   
-                <figure class="image is-16by9">
-                    <img class="" src="${teams[i].imgLivery}" alt="${teams[i].shortName} livery">
-                </figure>
-                </div>
-            `
-
-        if (i == 10) {
-            html_body += `
-                <div class="column mx-0.5"><br>   
-                
-                </div>
-            `
-        }
-        if ((i + 1) % 4 == 0) {
-            html_body += `
-                    </div>
-                    <div class="columns">
-                    `;
-        }
-    }
-    html_body += `
-                </div>
-            `;
-
-    response.send(html_header + html_navBar + html_body + html_footer); //Manda la respuesta
+    response.render('teams', {teams: teams}); 
+    next();
 });
-
+router.use((request, response, next) => {
+    response.render('teams'); //Manda la respuesta
+});
 
 module.exports = router;

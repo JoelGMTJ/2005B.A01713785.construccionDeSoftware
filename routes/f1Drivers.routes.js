@@ -167,16 +167,18 @@ router.use('/op81', (request, response, next) => {
     response.send(html_header + html_navBar + mv1Description + html_footer); //Manda la respuesta
 });
 
-router.use((request, response, next) => {
-    response.render('drivers.ejs'); //Manda la respuesta
-});
-
 //esto es lo que le manda A a donde se necesite llamado como B
 //Osea que manda A (teams) a las partes que lo necesiten y lo manda como una
 //variable B (teams)
 router.use((request, response, next) => {
-    response.render('list', {teams: teams}); 
+    response.render('drivers', {teams: teams}); 
+    next();
 });
+
+router.use((request, response, next) => {
+    response.render('drivers.ejs');
+});
+
 
 
 module.exports = router;

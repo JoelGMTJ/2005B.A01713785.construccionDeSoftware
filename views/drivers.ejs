@@ -3,19 +3,19 @@
         <div class="content px-6 mx-6">
 
             <h1 id="mainPageTitle">The 2026 drivers</h1>
-<% for (let i = 0; i < teams.length; i++) { %>
+            <% for (let i = 0; i < teams.length; i++) { %>
                 <div class="column mx-0.5">
                     <div class="columns is-vcentered">
                     <figure class="image column">
-                        <img class="" src=" <% teams[i].logo %>" alt="${teams[i].shortName} livery">
+                        <img class="" src="<%= teams[i].logo %>" alt="<%= teams[i].shortName %> livery">
                     </figure>
                     <figure class="image column">
-                        <img class="" src="${teams[i].imgPiloto1}" alt="${teams[i].shortName} livery">
-                        <p class="has-text-centered">${teams[i].piloto1}</p>
+                        <img class="" src="<%= teams[i].imgPiloto1 %>" alt="<%= teams[i].shortName %> livery">
+                        <p class="has-text-centered"><%= teams[i].piloto1 %></p>
                     </figure>
                     <figure class="image column">
-                        <img class="" src="${teams[i].imgPiloto2}" alt="${teams[i].shortName} livery">
-                        <p  class="has-text-centered">${teams[i].piloto2}</p>
+                        <img class="" src="<%= teams[i].imgPiloto2 %>" alt="<%= teams[i].shortName %> livery">
+                        <p  class="has-text-centered"><%= teams[i].piloto2 %></p>
                     </figure>
                 </div>
                 </div>
