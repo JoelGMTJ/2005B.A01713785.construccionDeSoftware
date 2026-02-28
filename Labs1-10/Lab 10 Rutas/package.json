@@ -1,0 +1,30 @@
+{
+  "name": "2005b.a01713785.construcciondesoftware",
+  "version": "1.0.0",
+  "description": "Laboratorios de clase 2005B",
+  "keywords": [
+    "node",
+    "labs",
+    "express"
+  ],
+  "homepage": "https://github.com/JoelGMTJ/2005B.A01713785.construccionDeSoftware#readme",
+  "bugs": {
+    "url": "https://github.com/JoelGMTJ/2005B.A01713785.construccionDeSoftware/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoelGMTJ/2005B.A01713785.construccionDeSoftware.git"
+  },
+  "license": "ISC",
+  "author": "Joel Guadalupe Garcia Guzman",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "hola": "echo \"hola\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
