@@ -8,8 +8,5 @@ router.use((request, response, next) => {
     response.render('teams', {teams: listaEquipos}); 
     next();
 });
-router.use((request, response, next) => {
-    response.render('teams'); //Manda la respuesta
-});
 
 module.exports = router;

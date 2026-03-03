@@ -8,8 +8,8 @@ const teamsController = require('../controllers/equipos.controllers');
 //tomo la funciones que requieren unos / necesarios y se la agrego a el archivo equipos.controlles
 //y necesito de agrega el archivo y le escribo la variable que contiene la funcion equipos.controllers.get_add (cualquier nombre que le quiera agregar)
 
-router.post('/mv1', teamsController.get_verstappen);
-router.post('/op81', teamsController.get_piastri);
+router.get('/mv1', teamsController.get_verstappen);
+router.get('/op81', teamsController.get_piastri);
 
 //esto es lo que le manda A a donde se necesite llamado como B
 //Osea que manda A (teams) a las partes que lo necesiten y lo manda como una
@@ -23,7 +23,5 @@ router.use((request, response, next) => {
 router.use((request, response, next) => {
     response.render('drivers.ejs');
 });
-
-
 
 module.exports = router;
