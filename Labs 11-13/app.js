@@ -33,12 +33,21 @@ app.listen(PORT, '0.0.0.0', () => {
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+const session = require ('express-session');
+app.use(session({
+    secret: 'mi secreto debe ser un string aleatorio, no versionar',
+    resave: false,
+    saveUninitialized: false,
+}))
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
+
+const rutas_usuarios = require('./routes/users.routes');
+app.use('/users', rutas_usuarios);
 
 const rutas_f1teams = require('./routes/f1Teams.routes');
 app.use('/teams', rutas_f1teams);

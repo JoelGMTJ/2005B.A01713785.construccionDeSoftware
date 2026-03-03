@@ -7,5 +7,3 @@ exports.get_verstappen = (request, response, next) => {
 exports.get_piastri = (request, response, next) => {
     response.render('../views/oscar'); //Manda la respuesta
 };
-
-//En donde le enviamos las cosas de los equipos, tambien le enviamos la request.session.username
