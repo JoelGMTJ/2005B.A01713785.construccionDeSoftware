@@ -1,0 +1,25 @@
+<div class="content px-6 mx-6">
+    <h1 id="mainPageTitle">My moments</h1>
+
+    <div class="columns is-multiline" id="topColumn">
+
+        <% for (let i=0; i < momentos.length; i++) { %>
+
+            <div class="column is-3">
+                <div style="font-weight: bold;">
+                    <%= momentos[i].name %>
+                </div>
+                <a href="<%= momentos[i].videoLink %>">
+                    <figure class="image is-16by9">
+                        <img src="<%= momentos[i].image %>">
+                    </figure>
+                </a>
+            </div>
+
+            <% } %>
+
+    </div>
+    <div class="button is-info" href="/add">
+        Agregar momento
+    </div>
+</div>

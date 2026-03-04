@@ -43,5 +43,3 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const rutas_museum = require('./routes/museum.routes');
 app.use('/museum', rutas_museum);
-
-app.listen(3000); 
