@@ -14,7 +14,7 @@ const momentsList = [
     image: "https://media.formula1.com/image/upload/t_16by9Centre/c_lfill,w_3392/q_auto/v1740000000/trackside-images/2024/F1_Grand_Prix_of_Brazil_and_Qualifying/2182695804.webp",
 },
 {
-    name: "Ferrari fucks up Hungary",
+    name: "Leclerc crashout",
     season: 2025,
     location: "Hungary",
     videoLink: "https://youtu.be/hrPtK5D5yn4?t=337",
@@ -32,11 +32,10 @@ const momentsList = [
 module.exports = class Moments {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(mi_name, mi_season, mi_location, mi_drivers, mi_videoLink, mi_image) {
+    constructor(mi_name, mi_season, mi_location, mi_videoLink, mi_image) {
         this.name = mi_name;
         this.season = mi_season;
         this.location = mi_location;
-        this.drivers = mi_drivers,
         this.videoLink = mi_videoLink;
         this.image = mi_image;
     }

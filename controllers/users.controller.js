@@ -1,5 +1,7 @@
 exports.get_login = (request, response, next) => {
-    response.render('login');
+    response.render('login', {
+        username: request.session.username || '',
+    });
 };
 
 exports.post_login= (request, response, next) => {
@@ -7,8 +9,8 @@ exports.post_login= (request, response, next) => {
     response.redirect('/museum');
 };
 
-exports.get_logout = (request, response, next) => {};
-
-exports.get_signup = (request, response, next) => {};
-    
-exports.post_signup = (request, response, next) => {};
+exports.get_logout = (request, response, next) => {
+    request.session.destroy(() => {
+        response.redirect('/users/login'); //Este código se ejecuta cuando la sesión se elimina.
+    });
+};

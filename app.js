@@ -38,8 +38,22 @@ app.set('views', 'views');
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
+const session = require('express-session');
+
+app.use(session({
+    secret: 'tu_clave_secreta',
+    resave: false,
+    saveUninitialized: false,
+}));
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 const rutas_museum = require('./routes/museum.routes');
 app.use('/museum', rutas_museum);
+const rutas_users= require('./routes/users.routes');
+app.use('/users', rutas_users);
+
+app.use((request, response, next) => {
+    response.status(404).send("La ruta no existe");
+})
