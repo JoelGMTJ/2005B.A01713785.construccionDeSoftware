@@ -21,6 +21,7 @@ exports.post_add = ((request, response, next) => {
     const momento = new momentos(request.body.nombreMomento,
         request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
     );
-    momento.save();
-    response.redirect('/museum');
+    momento.save().then(() => {
+        return response.redirect('/museum');
+    }).catch((error) => {next(error)});
 });

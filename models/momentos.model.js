@@ -13,7 +13,10 @@ module.exports = class Moments {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        momentsList.push(this);
+        return db.execute(
+            'INSERT INTO momentos(name, season, location, videoLink, image) values (?, ?, ?, ?, ?)', 
+            [this.name, this.season, this.location, this.videoLink, this.image]
+        );
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
