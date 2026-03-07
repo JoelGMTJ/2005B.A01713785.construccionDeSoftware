@@ -1,12 +1,12 @@
-const Moments = require('../models/momentos.model');
-const momentos = require('../models/momentos.model')
+const momentos = require('../models/momentos.model');
 
 exports.get_museum = ((request, response, next) => {
-    const listaMomentos = momentos.fetchAll();
-    response.render('museum', {
-        momentos :listaMomentos,
-        username: request.session.username || '',
-    });
+    const listaMomentos = momentos.fetchAll().then(([rows, fieldData]) => {
+        response.render('museum', {
+            momentos :rows,
+            username: request.session.username || '',
+        });
+    }).catch((error) => {next(error)});
 });
 
 exports.get_add = ((request, response, next) => {
@@ -18,7 +18,7 @@ exports.get_add = ((request, response, next) => {
 });
 
 exports.post_add = ((request, response, next) => {
-    const momento = new Moments(request.body.nombreMomento,
+    const momento = new momentos(request.body.nombreMomento,
         request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
     );
     momento.save();
