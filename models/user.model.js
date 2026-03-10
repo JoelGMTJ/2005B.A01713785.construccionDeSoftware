@@ -30,11 +30,15 @@ module.exports = class User {
         return db.execute("SELECT * FROM usuarios WHERE username = ?", [username]);
     }
 
-}
+    static getPermisos(username){
+        return db.execute(`
+            SELECT pri.nombre_privilegio 
+            FROM privilegios pri, posee pos, roles r, tiene t
+            WHERE t.user_id = ?
+            AND pri.id = pos.priv_id
+            AND pos.rol_id = r.id
+            AND t.id_rol = r.id`, [username]
+        );
+    }
 
-/*
-Primero tengo que ajustar el controlador para que tenga la funcion de agregar un nuevo usuario
-pasarle todos los datos que le lleguen desde la vista ejs para que le lleguen al model y cree el usuario
-El valor que tiene el then dentro de la funcion anónima (password_cifrado) es el valor ya cifrado que nos regresa bcrypt
-Hacemos un INSERT INTO en la base de datos con los datos que nos regreso de la cosa y el password_cifrado
-*/
+}
