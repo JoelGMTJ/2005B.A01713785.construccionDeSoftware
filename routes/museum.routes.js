@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const museumController = require('../controllers/museum.controller');
+const isAuth = require('../util/is-auth');
 
-router.get('/', museumController.get_museum);
-router.get('/add', museumController.get_add);
-router.post('/add', museumController.post_add);
+router.get('/', isAuth, museumController.get_museum);
+router.get('/add', isAuth, museumController.get_add);
+router.post('/add', isAuth, museumController.post_add);
 
 // router.get('/add', personajesController.get_add);
 // router.get('/nuevo', personajesController.get_add);

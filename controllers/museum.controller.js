@@ -3,6 +3,7 @@ const momentos = require('../models/momentos.model');
 exports.get_museum = ((request, response, next) => {
     const listaMomentos = momentos.fetchAll().then(([rows, fieldData]) => {
         response.render('museum', {
+            csrfToken: request.csrfToken(),
             momentos :rows,
             username: request.session.username || '',
         });
@@ -12,6 +13,7 @@ exports.get_museum = ((request, response, next) => {
 exports.get_add = ((request, response, next) => {
     const listaMomentos = momentos.fetchAll();
     response.render('nuevoMomento', {
+        csrfToken: request.csrfToken(),
         momentos :listaMomentos,
         username: request.session.username || '',
     });

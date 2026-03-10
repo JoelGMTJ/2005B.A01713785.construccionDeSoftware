@@ -2,7 +2,11 @@ const User = require("../models/user.model");
 const bcrypt = require('bcrypt');
 
 exports.get_login = (request, response, next) => {
+    const error = request.session.error || '';
+    request.session.error = '';
     response.render('login', {
+        csrfToken: request.csrfToken(),
+        error: error,
         username: request.session.username || '',
     });
 };
@@ -18,7 +22,7 @@ exports.post_login= (request, response, next) => {
                         return response.redirect('/museum');
                     }); 
                 } else {
-
+                    request.session.error = "Usario y/o contraseña no coinciden";
                     return response.redirect('/users/login');
                 }
             }).catch((error) => {
@@ -26,13 +30,39 @@ exports.post_login= (request, response, next) => {
                 next(error);
             });
         } else {
-
+            request.session.error = "Usario y/o contraseña no coinciden";
             return response.redirect('/users/login');
         }
     }).catch((error) => {
         console.log(error);
         next(error);
     });
+};
+
+exports.get_signup = (request, response, next) => {
+    const error = request.session.error || '';
+    request.session.error = '';
+    response.render('signup', {
+        csrfToken: request.csrfToken(),
+        username: request.session.username || '',
+        error: error,
+    })
+};
+
+exports.post_signup = (request, response, next) => {
+    if (request.body.password != request.body.password_confirm) {
+        request.session.error = 'Las contraseñas no coinciden';
+        return response.redirect('/users/signup');
+    } else {
+        const user = new User(
+            request.body.username, request.body.name, request.body.password);
+        user.save().then(() => {
+            return response.redirect('/users/login');
+        }).catch((error) => {
+            console.log(error);
+            next(error);
+        });
+    }
 };
 
 exports.get_logout = (request, response, next) => {
