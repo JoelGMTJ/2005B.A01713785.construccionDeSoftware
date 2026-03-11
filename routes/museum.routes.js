@@ -9,5 +9,7 @@ const puedeVer = require('../util/puede_ver');
 router.get('/', isAuth, puedeVer, museumController.get_museum);
 router.get('/add', isAuth, puedeCrear, museumController.get_add);
 router.post('/add', isAuth, puedeCrear, museumController.post_add);
+router.get('/:momentoId/edit', isAuth, puedeCrear, museumController.get_edit);
+router.post('/:momentoId/edit', isAuth, puedeCrear, museumController.post_edit);
 
 module.exports = router;

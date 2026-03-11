@@ -24,4 +24,15 @@ module.exports = class Moments {
         return db.execute('SELECT * FROM momentos');
     }
 
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM momentos WHERE momentoid = ?', [id]);
+    }
+
+    static edit(id, name, season, place, videoLink, img) {
+        return db.execute(
+            "UPDATE momentos SET name=?, season=?, location=?, image=?, videoLink=? WHERE momentoid=?", 
+            [name, season, place, img, videoLink, id]
+        );
+    }
+
 }

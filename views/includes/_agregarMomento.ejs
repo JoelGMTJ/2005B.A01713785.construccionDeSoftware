@@ -1,32 +1,44 @@
-<form action="/museum/add" method="POST">
+<% if (edit) { %>
+    <form action="/museum/<%= momento.momentoId %>/edit" method="POST">
+        <input type="hidden" name="momentoId" value="<%= momento.momentoId %>">
+<% } else { %>
+    <form action="/museum/add" method="POST">
+<% } %>
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
     <div class="content px-6 mx-6">
         <div class="field">
             <label for="nombreMomento" class="label">Nombre del momento</label>
             <div class="control">
                 <input id="nombreMomento" name="nombreMomento" class="input" type="text"
-                    placeholder="e.g Norris bottle">
+                    placeholder="e.g Norris bottle"
+                    value="<% if(edit) { %><%= momento.name %><% } %>">
             </div>
         </div>
 
         <div class="field">
             <label for="temporada" class="label">Temporada</label>
             <div class="control">
-                <input id="temporada" name="temporada" class="input" type="text" placeholder="e.g. 2025">
+                <input id="temporada" name="temporada" class="input" type="text" 
+                    placeholder="e.g. 2025"
+                    value="<% if(edit) { %><%= momento.season %><% } %>">
             </div>
         </div>
 
         <div class="field">
             <label for="lugar" class="label">Lugar</label>
             <div class="control">
-                <input id="lugar" name="lugar" class="input" type="text" placeholder="e.g. Silverstone, Brazil">
+                <input id="lugar" name="lugar" class="input" type="text" 
+                    placeholder="e.g. Silverstone, Brazil"
+                    value="<% if(edit) { %><%= momento.location %><% } %>">
             </div>
         </div>
 
         <div class="field">
             <label for="videoLink" class="label">Link del video</label>
             <div class="control">
-                <input id="videoLink" name="videoLink" class="input" type="text" placeholder="Link de youtube">
+                <input id="videoLink" name="videoLink" class="input" type="text" 
+                    placeholder="Link de youtube"
+                    value="<% if(edit) { %><%= momento.videoLink %><% } %>">
             </div>
         </div>
 
@@ -34,10 +46,11 @@
             <label for="imageLink" class="label">Link de la imágen</label>
             <div class="control">
                 <input id="imageLink" name="imageLink" class="input" type="text"
-                    placeholder="Link de imágen de internet">
+                    placeholder="Link de imágen de internet"
+                    value="<% if(edit) { %><%= momento.image %><% } %>">
             </div>
         </div>
 
-        <input class="button is-primary" type="submit" value="Guardar momento">
+        <input class="button is-primary" type="submit" value="<% if(edit) { %>Actualizar momento<% } else { %>Guardar momento<% } %>">
     </div>
 </form>
