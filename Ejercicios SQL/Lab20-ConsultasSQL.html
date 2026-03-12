@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="formato.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 20 - Joel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <style>
+        body {
+            margin: 0 auto;
+            max-width: 50em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title mt-3 mb-2">Notas del laboratorio 20    </h1>
+    <h2 class="subtitle mt-3 mb-6">Joel García Guzmán - A01713785</h2>
+    <p>
+    <ul>
+        <li class="pregunta">
+            SQL <br>
+            select * from materiales,entregan <br>
+            where materiales.clave = entregan.clave <br>
+            Si algún material no ha se ha entregado ¿Aparecería en el resultado de esta consulta?
+        </li>
+        <li class="respuesta">
+            No, solamente van a aparecer los materiales que también aparezcan en la tabla de entregas
+        </li>
+        <li class="pregunta">
+            SQL <br>
+            (select * from entregan where clave=1450) <br>
+            union <br>
+            (select * from entregan where clave=1300) <br>
+            ¿Cuál sería una consulta que obtuviera el mismo resultado sin usar el operador Unión? Compruébalo.
+        </li>
+        <li class="respuesta">
+            Una consulta podría ser: <br>
+            <div class="code">
+                SELECT *
+                FROM entregan
+                WHERE clave = 1450
+                OR clave = 1300
+            </div>
+        </li>
+        <li class="pregunta">
+            SQL <br>
+            select * from entregan,materiales <br>
+            ¿Cómo está definido el número de tuplas de este resultado en términos del número de tuplas de entregan y de
+            materiales?
+        </li>
+        <li class="respuesta">
+            Va a ser todas las posibles combinaciones entre entregan y materiales, y como no igualamos las claves
+            entonces sería de la cantidad de tuplas de entregan*materiales
+        </li>
+        <li class="pregunta">
+            Plantea ahora una consulta para obtener las descripciones de los materiales entregados en el año 2000. <br>
+            ¿Por qué aparecen varias veces algunas descripciones de material?
+        </li>
+        <li class="respuesta">
+            La consulta es:
+            <div class="code">
+                SELECT descripcion
+                FROM materiales, entregan
+                WHERE materiales.clave = entregan.clave
+                AND fecha LIKE '2000%'
+            </div>
+            y los materiales que salen varias veces pues significa que fueron entregados varias veces en ese año
+        </li>
+        <li class="pregunta">
+            En el resultado anterior, observamos que una misma descripción de material aparece varias veces. <br>
+            Agrega la palabra distinct inmediatamente después de la palabra select a la consulta que planteaste antes.
+            <br>
+
+            ¿Qué resultado obtienes en esta ocasión?
+        </li>
+        <li class="respuesta">
+            Se eliminan todas las descripciones repetidas
+        </li>
+        <li class="pregunta">
+            Obtén los números y denominaciones de los proyectos con las fechas y cantidades de sus entregas, ordenadas
+            por número de proyecto, presentando las fechas de la más reciente a la más antigua.
+        </li>
+        <li class="respuesta">
+            La query es: <br>
+            <div class="code">
+                SELECT e.numero, fecha, cantidad
+                FROM entregan e, proyectos p
+                WHERE e.numero = p.numero
+                ORDER BY e.numero DESC, fecha DESC
+            </div>
+        </li>
+        <li class="pregunta">
+            SELECT * FROM productos where Descripcion LIKE 'Si%' <br>
+            ¿Qué resultado obtienes? <br>
+            Explica que hace el símbolo '%'. <br>
+            ¿Qué sucede si la consulta fuera : LIKE 'Si' ? <br>
+            ¿Qué resultado obtienes? <br>
+            Explica a qué se debe este comportamiento.
+        </li>
+        <li class="respuesta">
+            Obtengo todos los materiales que comienzan con las letras 'si' <br>
+            Hace que antes o después de él, pueda ser cualquier caracter las veces que sea <br>
+            Si eliminamos el % lo que va a pasar es que solamente va a aparecer las descripciones de materiales que se
+            llamen 'SI', si tienen letras de mas o menos no van a salir <br>
+            Esto pues especificamos que queremos que sea exactamente como 'Si', sin nada diferente a lo que esté dentro
+            de las comillas
+        </li>
+        <li class="pregunta">
+            SELECT (Apellido + ', ' + Nombre) as Nombre FROM Personas; <br> <br>
+
+            DECLARE @foo varchar(40); <br>
+            DECLARE @bar varchar(40); <br>
+            SET @foo = '¿Que resultado'; <br>
+            SET @bar = ' ¿¿¿??? ' <br>
+            SET @foo += ' obtienes?'; <br>
+            PRINT @foo + @bar; <br> <br>
+
+            ¿Qué resultado obtienes de ejecutar el siguiente código? <br>
+            ¿Para qué sirve DECLARE? <br>
+            ¿Cuál es la función de @foo? <br>
+            ¿Que realiza el operador SET?
+        </li>
+        <li class="respuesta">
+            En SQLServer puedes almacenar las variables con un DECLARE @<i>variable</i>, entonces en este codigo vamos a
+            obtener la siguiente cadena '¿Que resultado obtienes? ¿¿¿???' <br>
+            La funcion declare solamente funciona para declarar una variable y @foo es el nombre de una variable, en
+            <b>MariaDB</b> funciona un poco diferente pues tenemos que declarar las variables con un
+            SET @<i>variable</i> = 'string' por lo que funciona un poco diferente. También para hacer los operadores de
+            strings +, += tenemos que usar CONCAT(A,B) <br>
+            El operador SET sirve para actualizar las variables
+        </li>
+        <li class="pregunta">
+            Ahora explica el comportamiento, función y resultado de cada una de las siguientes consultas: <br> <br>
+
+            SELECT RFC FROM Entregan WHERE RFC LIKE '[A-D]%'; <br>
+            SELECT RFC FROM Entregan WHERE RFC LIKE '[^A]%'; <br>
+            SELECT Numero FROM Entregan WHERE Numero LIKE '___6';
+        </li>
+        <li class="respuesta">
+            la primera consulta va a hacer que obtengas todos los RFC que comienzen por las letras de la A a la D <br>
+            la segunda consulta va a entregar todos los RFC que no comienzen por la letra A <br>
+            La tercera consulta va a entregar todos los números que tengan exactamente 4 dígitos y terminen en un 6 <br>
+            En <b>MariaDB</b> no va a funcionar esto pues necesitamos usar el comando REGEXP de regular expresions
+            <br><i>(Clases de Benji god)</i>
+        </li>
+        <li class="pregunta">
+            SELECT Clave,RFC,Numero,Fecha,Cantidad <br>
+            FROM Entregan <br>
+            WHERE Numero Between 5000 and 5010; <br> <br>
+
+            ¿Cómo filtrarías rangos de fechas? <br>
+        </li>
+        <li class="respuesta">
+            Usaría el between pero con las fechas que quiera, un ejemplo sería: <br>
+            <div class="code">
+                SELECT clave, rfc, numero, fecha, cantidad
+                FROM Entregan
+                WHERE fecha BETWEEN '1998-01-01' AND '2001-12-31';
+            </div>
+        </li>
+        <li class="pregunta">
+            SELECT RFC,Cantidad, Fecha,Numero <br>
+            FROM [Entregan] <br>
+            WHERE [Numero] Between 5000 and 5010 AND <br>
+            Exists ( SELECT [RFC] <br>
+            FROM [Proveedores] <br>
+            WHERE RazonSocial LIKE 'La%' and [Entregan].[RFC] = [Proveedores].[RFC] ) <br> <br>
+
+            ¿Qué hace la consulta? <br>
+            ¿Qué función tiene el paréntesis ( ) después de EXISTS?
+        </li>
+        <li class="respuesta">
+            Selecciona todos los datos de entregan que tengan un número entre 5000 y 5010 y su razon social comience por
+            'La' <br>
+            El paréntesis funciona para separar las 2 consultas, y que primero realize la que está dentro de los
+            paréntesis y luego la externa de ellos
+        </li>
+    </ul>
+    </p>
+</body>
+
+</html>
