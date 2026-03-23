@@ -22,7 +22,7 @@ exports.get_add = ((request, response, next) => {
 
 exports.post_add = ((request, response, next) => {
     const momento = new momentos(request.body.nombreMomento,
-        request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
+        request.body.temporada, request.body.lugar, request.body.videoLink, request.file.filename
     );
     momento.save().then(() => {
         return response.redirect('/museum');

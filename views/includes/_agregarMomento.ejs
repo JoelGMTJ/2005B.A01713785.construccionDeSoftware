@@ -1,8 +1,8 @@
 <% if (edit) { %>
-    <form action="/museum/<%= momento.momentoId %>/edit" method="POST">
+    <form action="/museum/<%= momento.momentoId %>/edit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="momentoId" value="<%= momento.momentoId %>">
 <% } else { %>
-    <form action="/museum/add" method="POST">
+    <form action="/museum/add" method="POST" enctype="multipart/form-data">
 <% } %>
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
     <div class="content px-6 mx-6">
@@ -45,7 +45,7 @@
         <div class="field">
             <label for="imageLink" class="label">Link de la imágen</label>
             <div class="control">
-                <input id="imageLink" name="imageLink" class="input" type="text"
+                <input id="imageLink" name="imageLink" class="input" type="file"
                     placeholder="Link de imágen de internet"
                     value="<% if(edit) { %><%= momento.image %><% } %>">
             </div>
