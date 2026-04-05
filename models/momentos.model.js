@@ -35,4 +35,15 @@ module.exports = class Moments {
         );
     }
 
+    static buscar(busqueda) {
+        const patron = '%' + busqueda + '%';
+        return db.execute(`
+            SELECT momentoid, name, season, location, videoLink, image, createdAt
+            FROM momentos
+            WHERE name LIKE ?
+            OR season LIKE ?
+            OR location LIKE ?
+            `, [patron, patron, patron]);
+    }
+
 }

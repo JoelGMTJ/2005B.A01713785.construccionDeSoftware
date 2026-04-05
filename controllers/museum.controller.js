@@ -12,17 +12,18 @@ exports.get_museum = ((request, response, next) => {
 });
 
 exports.get_add = ((request, response, next) => {
+    const listaMomentos = momentos.fetchAll();
     response.render('nuevoMomento', {
         edit: false,
-        momento: {},
         csrfToken: request.csrfToken(),
+        momentos :listaMomentos,
         username: request.session.username || '',
     });
 });
 
 exports.post_add = ((request, response, next) => {
     const momento = new momentos(request.body.nombreMomento,
-        request.body.temporada, request.body.lugar, request.body.videoLink, request.file.filename
+        request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
     );
     momento.save().then(() => {
         return response.redirect('/museum');

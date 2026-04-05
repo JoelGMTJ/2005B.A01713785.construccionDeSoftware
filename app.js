@@ -48,6 +48,7 @@ app.use(session({
 }));
 
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const multer = require('multer');
