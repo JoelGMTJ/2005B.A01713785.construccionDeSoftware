@@ -50,10 +50,9 @@ exports.post_edit = (request, response, next) => {
 };
 
 exports.get_buscar = (request, response, next) => {
-    response.status(200).json({message: "Respuesta asíncrona"});
-    // momentos.buscar(request.params.buscar).then(([momentos, fieldData]) => {
-    //     return response.status(200).json({momentos: momentos});
-    // }).catch((error) => {
-    //     return response.status(500).json({message: error.stack()});
-    // });
+    momentos.buscar(request.params.buscar).then(([momentos, fieldData]) => {
+        return response.status(200).json({momentos: momentos});
+    }).catch((error) => {
+        return response.status(500).json({message: error.stack()});
+    });
 };

@@ -11,30 +11,29 @@
     <input type="text" id="buscar" class="input is-warning" placeholder="Verstappen wins...">
     <br><br> 
 
-    <div class="columns is-multiline" id="topColumn">
-
-        <% for (let i=0; i < momentos.length; i++) { %>
-
-            <div class="column is-3">
-                <div style="font-weight: bold;">
-                    <%= momentos[i].name %>
+    <div id="mainContent">
+        <div class="columns is-multiline" id="topColumn">
+            <% for (let i=0; i < momentos.length; i++) { %>
+                <div class="column is-3">
+                    <div style="font-weight: bold;">
+                        <%= momentos[i].name %>
+                    </div>
+                    <a href="<%= momentos[i].videoLink %>" target="_blank">
+                        <figure class="image is-16by9">
+                            <img src="<%= momentos[i].image %>">
+                        </figure>
+                    </a>
+                    <a class="button is-warning is-small mt-2" href="/museum/<%= momentos[i].momentoId %>/edit">
+                        <span class="icon">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span>Editar</span>
+                    </a>
                 </div>
-                <a href="<%= momentos[i].videoLink %>" target="_blank">
-                    <figure class="image is-16by9">
-                        <img src="<%= momentos[i].image %>">
-                    </figure>
-                </a>
-                <a class="button is-warning is-small mt-2" href="/museum/<%= momentos[i].momentoId %>/edit">
-                    <span class="icon">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </span>
-                    <span>Editar</span>
-                </a>
-            </div>
-
-            <% } %>
-
+                <% } %>
+        </div>
     </div>
+
     <% for (let permiso of permisos) { %>
         <% if (permiso.nombre_privilegio == 'agregar_momentos') { %>
             <a class="button is-info" href="/museum/add">Agregar momento</a>
