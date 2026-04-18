@@ -25,12 +25,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.52",
+    "ai": "^6.0.158",
     "bcrypt": "^6.0.0",
     "csurf": "^1.11.0",
+    "dotenv": "^17.4.2",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
     "multer": "^2.1.1",
-    "mysql2": "^3.19.0"
+    "mysql2": "^3.19.0",
+    "zod": "^4.3.6"
   }
 }
