@@ -1,6 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS `f1moments` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
+USE `f1moments`;
 
 DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
@@ -10,7 +12,10 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `moment` int(11) NOT NULL,
   PRIMARY KEY (`logId`),
   KEY `fk_logs_momentos` (`moment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+INSERT INTO `logs` (`logId`, `operation`, `timestamp`, `moment`) VALUES
+(1, 'Created', '2026-04-19 22:18:20', 17);
 
 DROP TABLE IF EXISTS `momentos`;
 CREATE TABLE IF NOT EXISTS `momentos` (
@@ -22,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `momentos` (
   `image` varchar(500) NOT NULL,
   `createdAt` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`momentoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 INSERT INTO `momentos` (`momentoId`, `name`, `season`, `location`, `videoLink`, `image`, `createdAt`) VALUES
 (1, 'Hulkenberg first podium', '2025', 'Silverstone', 'https://youtu.be/daWr9xnkKS4?t=430', 'https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/b94e/live/9dea8bf0-5a90-11f0-9f6f-9b31b462c89f.jpg', '2026-03-07'),
@@ -40,7 +45,14 @@ INSERT INTO `momentos` (`momentoId`, `name`, `season`, `location`, `videoLink`, 
 (13, 'Box now box', '2022', 'Monaco', 'https://youtu.be/3Yo2ynH5WUQ', 'https://inews.co.uk/wp-content/uploads/2022/05/SEI_107029607.jpg', '2026-03-09'),
 (14, 'Leclerc crashes', '2022', 'France', 'https://youtu.be/5nfvePtguec', 'https://pbs.twimg.com/media/FYb3idfXEAIq5w7?format=jpg&name=large', '2026-03-09'),
 (15, 'Tifosi win', '2024', 'Monza', 'https://youtu.be/lkDDFVjj-4c?t=1103', 'https://d2n9h2wits23hf.cloudfront.net/image/v1/static/6057949432001/19e7cb06-0291-41ec-89e5-4af35c904b8f/0023f185-7069-48fd-8c9d-c7ab701c8ba0/864x486/match/image.jpg', '2026-03-11'),
-(16, 'Vettel first championship', '2010', 'Abu Dhabi', 'https://youtu.be/OscqgBj1HCw?t=499', '30-vettel first wdc.jpg', '2026-03-23');
+(16, 'Vettel first championship', '2010', 'Abu Dhabi', 'https://youtu.be/OscqgBj1HCw?t=499', '30-vettel first wdc.jpg', '2026-03-23'),
+(17, 'Kimi Antonelli first win', '2026', 'China', 'https://youtu.be/t8HpVlineX4?t=425', '19-kimi win.jpg', '2026-04-19');
+DROP TRIGGER IF EXISTS `registerOperation`;
+DELIMITER $$
+CREATE TRIGGER `registerOperation` AFTER INSERT ON `momentos` FOR EACH ROW INSERT INTO logs (`operation`, `moment`)
+VALUES ('Created', new.momentoId)
+$$
+DELIMITER ;
 
 DROP TABLE IF EXISTS `posee`;
 CREATE TABLE IF NOT EXISTS `posee` (
