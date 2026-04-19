@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
 
-import "dotenv/config";
-import { generateText, streamText, Output } from "ai";
-import { openai } from "@ai-sdk/openai";
-import { z } from "zod";
+require('dotenv').config();
 
 const qrcode = require('qrcode-terminal');
 const os = require('os');

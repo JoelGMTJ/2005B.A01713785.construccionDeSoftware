@@ -1,6 +1,7 @@
 {
   "name": "2005b.a01713785.construcciondesoftware",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "Laboratorios de clase 2005B",
   "keywords": [
     "node",
@@ -17,7 +18,6 @@
   },
   "license": "ISC",
   "author": "Joel Guadalupe Garcia Guzman",
-  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "start": "node --watch app.js",

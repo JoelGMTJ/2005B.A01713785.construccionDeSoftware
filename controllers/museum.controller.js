@@ -22,8 +22,14 @@ exports.get_add = ((request, response, next) => {
 });
 
 exports.post_add = ((request, response, next) => {
+    const imageName = request.file ? request.file.filename : null;
+
+    if (!imageName) {
+        return response.status(400).send('Debes seleccionar una imagen para guardar el momento.');
+    }
+
     const momento = new momentos(request.body.nombreMomento,
-        request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
+        request.body.temporada, request.body.lugar, request.body.videoLink, imageName
     );
     momento.save().then(() => {
         return response.redirect('/museum');
@@ -42,8 +48,10 @@ exports.get_edit = (request, response, next) => {
 };
 
 exports.post_edit = (request, response, next) => {
+    const imageName = request.file ? request.file.filename : request.body.currentImage;
+
     momentos.edit(request.params.momentoId, request.body.nombreMomento,
-        request.body.temporada, request.body.lugar, request.body.videoLink, request.body.imageLink
+        request.body.temporada, request.body.lugar, request.body.videoLink, imageName
     ).then(() => {
         return response.redirect('/museum');
     }).catch((error) => {next(error)});

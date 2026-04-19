@@ -1,6 +1,7 @@
 <% if (edit) { %>
     <form action="/museum/<%= momento.momentoId %>/edit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="momentoId" value="<%= momento.momentoId %>">
+        <input type="hidden" name="currentImage" value="<%= momento.image %>">
 <% } else { %>
     <form action="/museum/add" method="POST" enctype="multipart/form-data">
 <% } %>
