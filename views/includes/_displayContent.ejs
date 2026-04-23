@@ -1,5 +1,34 @@
 <div class="content px-6 mx-6">
     <br>
+    <style>
+        .charts-grid {
+            margin-top: 1.5rem;
+        }
+
+        .chart-card {
+            border: 1px solid #d9d9d9;
+            border-radius: 12px;
+            background: #fff;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .chart-title {
+            color: #1f2937;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .chart-canvas-wrap {
+            position: relative;
+            width: 100%;
+            min-height: 360px;
+            height: 45vw;
+            max-height: 460px;
+        }
+    </style>
+
     <p class="subtitle">
         <% if (username != '') { %> 
         Bienvenido <strong><%= username %></strong>!
@@ -39,4 +68,219 @@
             <a class="button is-info" href="/museum/add">Agregar momento</a>
         <% } %>
     <% } %>
+
+    <div class="columns is-variable is-5 charts-grid">
+        <div class="column is-12-mobile is-6-desktop">
+            <div class="chart-card">
+                <h2 class="chart-title">Momentos por temporada</h2>
+                <div class="chart-canvas-wrap">
+                    <canvas id="seasonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-12-mobile is-6-desktop">
+            <div class="chart-card">
+                <h2 class="chart-title">Popularidad de pilotos</h2>
+                <div class="chart-canvas-wrap">
+                    <canvas id="pilotChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div
+    id="chartsData"
+    data-momentos='<%- JSON.stringify(momentos || []).replace(/\'/g, "&#39;") %>'
+    data-pilotos='<%- JSON.stringify(pilotPopularity || []).replace(/\'/g, "&#39;") %>'
+    style="display:none;"
+></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    (() => {
+        let seasonChartInstance = null;
+        let pilotChartInstance = null;
+
+        let initialMoments = [];
+        let initialPilotPopularity = [];
+
+        const chartsDataElement = document.getElementById('chartsData');
+        if (chartsDataElement) {
+            try {
+                initialMoments = JSON.parse(chartsDataElement.dataset.momentos || '[]');
+                initialPilotPopularity = JSON.parse(chartsDataElement.dataset.pilotos || '[]');
+            } catch (error) {
+                console.log('No se pudieron leer los datos iniciales de las graficas:', error);
+            }
+        }
+
+        const buildSeasonChart = (momentsData) => {
+            const chartCanvas = document.getElementById('seasonChart');
+            if (!chartCanvas) {
+                return;
+            }
+
+            if (seasonChartInstance) {
+                seasonChartInstance.destroy();
+            }
+
+            const seasonCount = {};
+            for (const moment of momentsData) {
+                const seasonLabel = String(moment.season || 'Sin temporada');
+                seasonCount[seasonLabel] = (seasonCount[seasonLabel] || 0) + 1;
+            }
+
+            const labels = Object.keys(seasonCount).sort((a, b) => a.localeCompare(b, 'es'));
+            const values = labels.map((label) => seasonCount[label]);
+
+            seasonChartInstance = new Chart(chartCanvas, {
+                type: 'pie',
+                data: {
+                    labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            '#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#f97316', '#8b5cf6',
+                            '#06b6d4', '#84cc16', '#e11d48', '#6366f1', '#14b8a6', '#f43f5e'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#111827',
+                                boxWidth: 15,
+                                font: {
+                                    size: 13,
+                                    weight: '600'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.label}: ${ctx.raw} momentos`
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        const buildPilotChart = (pilotData) => {
+            const chartCanvas = document.getElementById('pilotChart');
+            if (!chartCanvas) {
+                return;
+            }
+
+            if (pilotChartInstance) {
+                pilotChartInstance.destroy();
+            }
+
+            const sortedPilotData = [...pilotData].sort((a, b) => Number(b.total) - Number(a.total));
+            const labels = sortedPilotData.map((driver) => driver.name);
+            const values = sortedPilotData.map((driver) => Number(driver.total));
+
+            const defaultTeamColors = {
+                'Max Verstappen': '#1e41ff',
+                'Sergio Perez': '#1e41ff',
+                'Lewis Hamilton': '#00d2be',
+                'Kimi Antonelli': '#00d2be',
+                'Nico Hulkenberg': '#52e252',
+                'Charles Leclerc': '#dc0000',
+                'Carlos Sainz': '#dc0000',
+                'Lando Norris': '#ff8000',
+                'Oscar Piastri': '#ff8000',
+                'Sebastian Vettel': '#1e5bc6',
+                'Mark Webber': '#1e5bc6'
+            };
+
+            const isValidHexColor = (value) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(String(value || '').trim());
+            const darkenColor = (hexColor, amount) => {
+                const color = hexColor.replace('#', '');
+                const full = color.length === 3 ? color.split('').map((c) => c + c).join('') : color;
+                const r = Math.max(0, parseInt(full.substring(0, 2), 16) - amount);
+                const g = Math.max(0, parseInt(full.substring(2, 4), 16) - amount);
+                const b = Math.max(0, parseInt(full.substring(4, 6), 16) - amount);
+                return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+            };
+
+            const barColors = sortedPilotData.map((driver) => {
+                const dbColor = String(driver.driverColor || '').trim();
+                if (isValidHexColor(dbColor)) {
+                    return dbColor;
+                }
+                return defaultTeamColors[driver.name] || '#6b7280';
+            });
+            const borderColors = barColors.map((color) => darkenColor(color, 28));
+
+            pilotChartInstance = new Chart(chartCanvas, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: barColors,
+                        borderColor: borderColors,
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0,
+                                color: '#111827',
+                                font: {
+                                    size: 12,
+                                    weight: '600'
+                                }
+                            },
+                            grid: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#111827',
+                                font: {
+                                    size: 13,
+                                    weight: '700'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.raw} apariciones`
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        window.updateMuseumCharts = (momentsData, pilotData) => {
+            buildSeasonChart(Array.isArray(momentsData) ? momentsData : []);
+            buildPilotChart(Array.isArray(pilotData) ? pilotData : []);
+        };
+
+        window.updateMuseumCharts(initialMoments, initialPilotPopularity);
+    })();
+</script>

@@ -39,6 +39,9 @@
             }
             
             document.getElementById('topColumn').innerHTML = html;
+            if (window.updateMuseumCharts) {
+                window.updateMuseumCharts(data.momentos, data.pilotPopularity);
+            }
         }).catch((error) => {
             console.log(error);
         }); 
