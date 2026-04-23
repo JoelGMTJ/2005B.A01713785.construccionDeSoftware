@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2026 at 12:39 AM
+-- Generation Time: Apr 24, 2026 at 12:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -14,23 +14,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `f1moments`
 --
+CREATE DATABASE IF NOT EXISTS `f1moments` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
+USE `f1moments`;
 
 --
 -- Dumping data for table `drivers`
 --
 
-INSERT INTO `drivers` (`driver_id`, `name`) VALUES
-(1, 'Nico Hulkenberg'),
-(2, 'Max Verstappen'),
-(3, 'Charles Leclerc'),
-(4, 'Kimi Antonelli'),
-(5, 'Sebastian Vettel'),
-(6, 'Mark Webber'),
-(7, 'Sergio Perez'),
-(8, 'Carlos Sainz'),
-(9, 'Lewis Hamilton'),
-(10, 'Lando Norris'),
-(11, 'Oscar Piastri');
+INSERT INTO `drivers` (`driver_id`, `name`, `color`) VALUES
+(1, 'Nico Hulkenberg', '#52E252'),
+(2, 'Max Verstappen', '#1E41FF'),
+(3, 'Charles Leclerc', '#DC0000'),
+(4, 'Kimi Antonelli', '#00D2BE'),
+(5, 'Sebastian Vettel', '#1E5BC6'),
+(6, 'Mark Webber', '#1E5BC6'),
+(7, 'Sergio Perez', '#1E41FF'),
+(8, 'Carlos Sainz', '#DC0000'),
+(9, 'Lewis Hamilton', '#00D2BE'),
+(10, 'Lando Norris', '#FF8000'),
+(11, 'Oscar Piastri', '#FF8000');
 
 --
 -- Dumping data for table `driver_moment`
